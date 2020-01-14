@@ -26,4 +26,4 @@ $chart = LarapexChart::setType('pie')
 The author Ariel Mejia Dev.
 
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT](./LICENSE.md)

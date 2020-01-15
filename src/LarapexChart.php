@@ -122,7 +122,7 @@ class LarapexChart
 
     public function container()
     {
-        return View::make('larapex-charts::chart.container', ['id' => $this->id]);
+        return View::make('larapex-charts::chart.container', ['id' => $this->id()]);
     }
 
     public function script()

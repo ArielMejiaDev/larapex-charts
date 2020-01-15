@@ -2,33 +2,33 @@
     var options =
     {
         chart: {
-            type: '{!! $chart->type !!}',
-            height: {!! $chart->height !!}
+            type: '{!! $chart->type()) !!}',
+            height: {!! $chart->height()) !!}
         },
         plotOptions: {
-            bar: {!! $chart->horizontal !!}
+            bar: {!! $chart->horizontal()) !!}
         },
-        colors: {!! $chart->colors !!},
-        series: {!! $chart->dataset !!},
+        colors: {!! $chart->colors() !!},
+        series: {!! $chart->dataset() !!},
         dataLabels: {
             enabled: false
         },
-        labels: [{!! $chart->labels !!}],
+        labels: [{!! $chart->labels() !!}],
         title: {
-            text: "{!! $chart->title !!}"
+            text: "{!! $chart->title() !!}"
         },
         subtitle: {
-            text: '{!! $chart->subtitle !!}',
-            align: '{!! $chart->subtitlePosition !!}'
+            text: '{!! $chart->subtitle()) !!}',
+            align: '{!! $chart->subtitlePosition() !!}'
         },
         xaxis: {
-            categories: {!! $chart->xAxis !!}
+            categories: {!! $chart->xAxis()) !!}
         },
-        grid: {!! $chart->grid !!},
-        stroke: {!! $chart->stroke !!}
+        grid: {!! $chart->grid() !!},
+        stroke: {!! $chart->stroke() !!}
     }
 
-    var chart = new ApexCharts(document.querySelector("#{!! $chart->id !!}"), options);
+    var chart = new ApexCharts(document.querySelector("#{!! $chart->id() !!}"), options);
     chart.render();
 
 </script>

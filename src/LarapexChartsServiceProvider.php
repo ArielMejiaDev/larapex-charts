@@ -14,7 +14,7 @@ class LarapexChartsServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind('larapex-chart', function(){
-            return new Chart;
+            return new LarapexChart;
         });
 
         $this->mergeConfigFrom($this->packageBasePath('config/larapex-charts.php'), 'larapex-charts');

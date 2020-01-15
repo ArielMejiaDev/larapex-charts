@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\View;
 
-class Chart
+class LarapexChart
 {
 
     /*
@@ -20,7 +20,7 @@ class Chart
     protected $title;
     protected $subtitle;
     protected $subtitlePosition;
-    protected $type = 'area';
+    protected $type = 'donut';
     protected $labels;
     protected $dataset;
     protected $height = 350;

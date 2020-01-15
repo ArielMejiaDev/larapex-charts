@@ -14,16 +14,16 @@ class ChartsTest extends TestCase
 
         $chart = LarapexChart::setTitle('Users');
 
-        $this->assertEquals('area', $chart->type);
+        $this->assertEquals('donut', $chart->type());
     }
 
     /** @test */
     public function larapex_can_change_default_config_colors()
     {
         $chart = LarapexChart::setTitle('Posts')->setXAxis(['Jan', 'Feb', 'Mar'])->setDataset([150, 120]);
-        $oldColors = $chart->colors;
+        $oldColors = $chart->colors();
         $chart->setColors(['#fe9700', '#607c8a']);
-        $this->assertNotEquals($oldColors, $chart->colors);
+        $this->assertNotEquals($oldColors, $chart->colors());
     }
 
     /** @test */

@@ -14,16 +14,16 @@ class ChartsTest extends TestCase
     {
         $this->withoutExceptionHandling();
         $chart = LarapexChart::setTitle('Users Test Chart');
-        $this->assertEquals('area', $chart->type);
+        $this->assertEquals('donut', $chart->type());
         $chart->setType('area');
-        $this->assertEquals('area', $chart->type);
+        $this->assertEquals('area', $chart->type());
     }
 
     /** @test */
     public function larapex_can_load_script_correctly()
     {
         $chart = LarapexChart::setTitle('Posts')->setXAxis(['Jan', 'Feb', 'Mar'])->setDataset([150, 120])->setLabels([__('Published'), __('No Published')]);
-        $this->assertEquals($chart->dataset, $chart->script()['chart']->dataset);
+        $this->assertEquals($chart->dataset(), $chart->script()['chart']->dataset());
     }
 
     /** @test */
@@ -47,8 +47,8 @@ class ChartsTest extends TestCase
                 ])
                 ->setHeight(250)
                 ->setGrid(false);
-        $this->assertEquals($chart->id, $chart->container()['id']);
-        $this->assertEquals( $chart, $chart->script()['chart']  );
+        $this->assertEquals($chart->id(), $chart->container()['id']);
+        $this->assertEquals($chart, $chart->script()['chart']);
     }
 
     /** @test */
@@ -131,7 +131,7 @@ class ChartsTest extends TestCase
                         'data'  =>  [250, 700, 1200]
                     ]
                 ]);
-        $this->assertEquals($chart->id, $chart->container()['id']);
+        $this->assertEquals($chart->id(), $chart->container()['id']);
         $this->assertEquals( $chart, $chart->script()['chart']  );
     }
 

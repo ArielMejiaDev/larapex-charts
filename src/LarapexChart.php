@@ -17,18 +17,18 @@ class Chart
     */
 
     public $id;
-    public $title;
-    public $subtitle;
-    public $subtitlePosition;
-    public $type = 'area';
-    public $labels;
-    public $dataset;
-    public $height = 350;
-    public $colors;
-    public $horizontal;
-    public $xAxis;
-    public $grid;
-    public $stroke;
+    protected $title;
+    protected $subtitle;
+    protected $subtitlePosition;
+    protected $type = 'area';
+    protected $labels;
+    protected $dataset;
+    protected $height = 350;
+    protected $colors;
+    protected $horizontal;
+    protected $xAxis;
+    protected $grid;
+    protected $stroke;
     private $chartLetters = 'abcdefghijklmnopqrstuvwxyz';
 
     public function __construct()
@@ -136,6 +136,110 @@ class Chart
     public function cdn()
     {
         return 'https://cdn.jsdelivr.net/npm/apexcharts';
+    }
+
+    /**
+     * @return false|string
+     */
+    public function id()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function title()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function subtitle()
+    {
+        return $this->subtitle;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function subtitlePosition()
+    {
+        return $this->subtitlePosition;
+    }
+
+    /**
+     * @return string
+     */
+    public function type()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function labels()
+    {
+        return $this->labels;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function dataset()
+    {
+        return $this->dataset;
+    }
+
+    /**
+     * @return int
+     */
+    public function height()
+    {
+        return $this->height;
+    }
+
+    /**
+     * @return false|string
+     */
+    public function colors()
+    {
+        return $this->colors;
+    }
+
+    /**
+     * @return false|string
+     */
+    public function horizontal()
+    {
+        return $this->horizontal;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function xAxis()
+    {
+        return $this->xAxis;
+    }
+
+    /**
+     * @return false|string
+     */
+    public function grid()
+    {
+        return $this->grid;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function stroke()
+    {
+        return $this->stroke;
     }
 
 }

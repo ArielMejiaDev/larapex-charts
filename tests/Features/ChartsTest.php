@@ -10,7 +10,7 @@ class ChartsTest extends TestCase
     use RefreshDatabase;
     
     /** @test */
-    public function larapex_can_render_area_charts_by_default()
+    public function larapex_can_render_pie_charts_by_default()
     {
         $this->withoutExceptionHandling();
         $chart = LarapexChart::setTitle('Users Test Chart');

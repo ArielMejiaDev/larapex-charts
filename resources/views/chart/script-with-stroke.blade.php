@@ -2,11 +2,11 @@
     var options =
     {
         chart: {
-            type: '{!! $chart->type()) !!}',
-            height: {!! $chart->height()) !!}
+            type: '{!! $chart->type() !!}',
+            height: {!! $chart->height() !!}
         },
         plotOptions: {
-            bar: {!! $chart->horizontal()) !!}
+            bar: {!! $chart->horizontal() !!}
         },
         colors: {!! $chart->colors() !!},
         series: {!! $chart->dataset() !!},
@@ -18,11 +18,11 @@
             text: "{!! $chart->title() !!}"
         },
         subtitle: {
-            text: '{!! $chart->subtitle()) !!}',
+            text: '{!! $chart->subtitle() !!}',
             align: '{!! $chart->subtitlePosition() !!}'
         },
         xaxis: {
-            categories: {!! $chart->xAxis()) !!}
+            categories: {!! $chart->xAxis() !!}
         },
         grid: {!! $chart->grid() !!},
         stroke: {!! $chart->stroke() !!}

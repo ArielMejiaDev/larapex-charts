@@ -1,7 +1,6 @@
 <?php namespace ArielMejiaDev\LarapexCharts\Tests\Features;
 
-use ArielMejiaDev\LarapexCharts\Facades\LarapexChart;
-use ArielMejiaDev\LarapexCharts\Models\Message;
+use ArielMejiaDev\LarapexCharts\LarapexChart;
 use ArielMejiaDev\LarapexCharts\Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -13,7 +12,7 @@ class ChartsTest extends TestCase
     public function larapex_can_render_pie_charts_by_default()
     {
         $this->withoutExceptionHandling();
-        $chart = LarapexChart::setTitle('Users Test Chart');
+        $chart = (new LarapexChart)->setTitle('Users Test Chart');
         $this->assertEquals('donut', $chart->type());
         $chart->setType('area');
         $this->assertEquals('area', $chart->type());
@@ -22,14 +21,14 @@ class ChartsTest extends TestCase
     /** @test */
     public function larapex_can_load_script_correctly()
     {
-        $chart = LarapexChart::setTitle('Posts')->setXAxis(['Jan', 'Feb', 'Mar'])->setDataset([150, 120])->setLabels([__('Published'), __('No Published')]);
+        $chart = (new LarapexChart)->setTitle('Posts')->setXAxis(['Jan', 'Feb', 'Mar'])->setDataset([150, 120])->setLabels([__('Published'), __('No Published')]);
         $this->assertEquals($chart->dataset(), $chart->script()['chart']->dataset());
     }
 
     /** @test */
     public function larapex_can_create_an_area_chart()
     {
-        $chart = LarapexChart::setType('area')
+        $chart = (new LarapexChart)->setType('area')
                 ->setTitle('Total Users Monthly')
                 ->setSubtitle('From January to March')
                 ->setXAxis([
@@ -54,21 +53,21 @@ class ChartsTest extends TestCase
     /** @test */
     public function larapex_can_render_donut_chart()
     {
-        $chart = LarapexChart::setType('donut')->setTitle('Posts')->setXAxis(['Jan', 'Feb', 'Mar'])->setDataset([150, 120])->setLabels(['Published', 'No Published']);
+        $chart = (new LarapexChart)->setType('donut')->setTitle('Posts')->setXAxis(['Jan', 'Feb', 'Mar'])->setDataset([150, 120])->setLabels(['Published', 'No Published']);
         $this->assertEquals($chart, $chart->script()['chart']);
     }
 
     /** @test */
     public function larapex_can_render_pie_chart()
     {
-        $chart = LarapexChart::setType('pie')->setTitle('Posts')->setXAxis(['Jan', 'Feb', 'Mar'])->setDataset([150, 120])->setLabels(['Published', 'No Published']);
+        $chart = (new LarapexChart)->setType('pie')->setTitle('Posts')->setXAxis(['Jan', 'Feb', 'Mar'])->setDataset([150, 120])->setLabels(['Published', 'No Published']);
         $this->assertEquals($chart, $chart->script()['chart']);
     }
 
     /** @test */
     public function larapex_can_render_radial_bar_charts()
     {
-            $chart = LarapexChart::setTitle('Products with more profit')
+            $chart = (new LarapexChart)->setTitle('Products with more profit')
                 ->setSubtitle('From January To March')
                 ->setType('radialBar')
                 ->setLabels(['Product One', 'Product Two', 'Product Three'])
@@ -81,7 +80,7 @@ class ChartsTest extends TestCase
     /** @test */
     public function larapex_can_render_bar_charts()
     {
-        $chart = LarapexChart::setTitle('Net Profit')
+        $chart = (new LarapexChart)->setTitle('Net Profit')
             ->setSubtitle('From January To March')
             ->setType('bar')
             ->setXAxis(['Jan', 'Feb', 'Mar'])
@@ -119,7 +118,7 @@ class ChartsTest extends TestCase
     /** @test */
     public function larapex_can_render_line_charts()
     {
-        $chart = LarapexChart::setType('line')
+        $chart = (new LarapexChart)->setType('line')
                 ->setTitle('Total Users Monthly')
                 ->setSubtitle('From January to March')
                 ->setXAxis([
@@ -138,7 +137,7 @@ class ChartsTest extends TestCase
     /** @test */
     public function larapex_can_render_horizontal_bar_chart()
     {
-        $chart = LarapexChart::setTitle('Net Profit')
+        $chart = (new LarapexChart)->setTitle('Net Profit')
         ->setSubtitle('From January To March')
         ->setType('bar')
         ->setHorizontal(true)
@@ -165,7 +164,7 @@ class ChartsTest extends TestCase
     /** @test */
     public function larapex_can_render_heatmap_chart()
     {
-        $chart = LarapexChart::setType('heatmap')
+        $chart = (new LarapexChart)->setType('heatmap')
         ->setTitle('Total Users')
         ->setSubtitle('From January to March')
         ->setXAxis([

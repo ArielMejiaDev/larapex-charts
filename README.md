@@ -17,7 +17,7 @@ composer require arielmejiadev/larapex-charts
 In your controller add:
 
 ```php
-$chart = LarapexChart::setTitle('Posts')
+$chart = (new LarapexChart)->setTitle('Posts')
                    ->setDataset([150, 120])
                    ->setLabels(['Published', 'No Published']);
 
@@ -61,7 +61,7 @@ Then in your view (Blade file) add:
 ### More complex example
 
 ```php
-$chart = LarapexChart::setType('area')
+$chart = (new LarapexChart)->setType('area')
         ->setTitle('Total Users Monthly')
         ->setSubtitle('From January to March')
         ->setXAxis([

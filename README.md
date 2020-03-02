@@ -1,5 +1,7 @@
 # Larapex Charts
 
+[![MadeWithLaravel.com shield](https://madewithlaravel.com/storage/repo-shields/2175-shield.svg)](https://madewithlaravel.com/p/larapex-charts/shield-link)
+
 A Laravel wrapper for apex charts library.
 
 ## Installation

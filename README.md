@@ -5,7 +5,7 @@
 
 <p align="center">
  
-<a title="MadeWithLaravel.com Shield" href="https://madewithlaravel.com/p/larapex-charts/shield-link"> <img src="https://madewithlaravel.com/storage/repo-shields/2175-shield.svg"/></a>
+[![MadeWithLaravel.com shield](https://madewithlaravel.com/storage/repo-shields/2175-shield.svg)](https://madewithlaravel.com/p/larapex-charts/shield-link)
 
 [![Latest Stable Version](https://poser.pugx.org/arielmejiadev/larapex-charts/v/stable)](https://packagist.org/packages/arielmejiadev/larapex-charts)
 
@@ -15,19 +15,7 @@
 
 [![License](https://poser.pugx.org/arielmejiadev/larapex-charts/license)](https://packagist.org/packages/arielmejiadev/larapex-charts)
   
-<img  alt="Packagist" src="https://img.shields.io/packagist/dt/ArielMejiaDev/larapex-charts?color=blue&logoColor=blue">
-  
 </p>
-
-
-
-
-
-
-
-
-
-
 
 A Laravel wrapper for apex charts library.
 

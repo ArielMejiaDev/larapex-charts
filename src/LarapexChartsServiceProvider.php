@@ -1,4 +1,6 @@
-<?php namespace ArielMejiaDev\LarapexCharts;
+<?php
+
+namespace ArielMejiaDev\LarapexCharts;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -13,6 +15,10 @@ class LarapexChartsServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->bind('larapex-chart', function(){
+            return new LarapexChart;
+        });
+
         $this->mergeConfigFrom($this->packageBasePath('config/larapex-charts.php'), 'larapex-charts');
     }
 

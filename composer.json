@@ -30,7 +30,7 @@
                 "ArielMejiaDev\\LarapexCharts\\LarapexChartsServiceProvider"
             ],
             "aliases": {
-                "LarapexCharts": "ArielMejiaDev\\LarapexCharts\\Facades\\LarapexCharts"
+                "LarapexChart": "ArielMejiaDev\\LarapexCharts\\Facades\\LarapexChart"
             }
         }
     }

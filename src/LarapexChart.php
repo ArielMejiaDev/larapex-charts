@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\View;
 class LarapexChart
 {
 
+    const DEFAULT_WIDTH = 600;
+
     /*
     |--------------------------------------------------------------------------
     | Chart
@@ -23,7 +25,8 @@ class LarapexChart
     protected $type = 'donut';
     protected $labels;
     protected $dataset;
-    protected $height = 350;
+    protected $height = 500;
+    protected $width;
     protected $colors;
     protected $horizontal;
     protected $xAxis;
@@ -34,6 +37,12 @@ class LarapexChart
     protected $zoom;
     protected $dataLabels;
     private $chartLetters = 'abcdefghijklmnopqrstuvwxyz';
+
+    /*
+    |--------------------------------------------------------------------------
+    | Constructors
+    |--------------------------------------------------------------------------
+    */
 
     public function __construct()
     {
@@ -49,62 +58,131 @@ class LarapexChart
         return $this;
     }
 
-    public function setType($type = null)
+    public function pieChart() :PieChart
+    {
+        return new PieChart();
+    }
+
+    public function donutChart() :DonutChart
+    {
+        return new DonutChart();
+    }
+
+    public function radialChart() :RadialChart
+    {
+        return new RadialChart();
+    }
+
+    public function polarAreaChart() :PolarAreaChart
+    {
+        return new PolarAreaChart();
+    }
+
+    public function lineChart() :LineChart
+    {
+        return new LineChart();
+    }
+
+    public function areaChart() :AreaChart
+    {
+        return new AreaChart();
+    }
+
+    public function barChart() :BarChart
+    {
+        return new BarChart();
+    }
+
+    public function horizontalBarChart() :HorizontalBar
+    {
+        return new HorizontalBar();
+    }
+
+    public function heatMapChart() :HeatMapChart
+    {
+        return new HeatMapChart();
+    }
+
+    public function radarChart() :RadarChart
+    {
+        return new RadarChart();
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Setters
+    |--------------------------------------------------------------------------
+    */
+
+    /**
+     *
+     * @deprecated deprecated since version 2.0
+     * @param null $type
+     * @return $this
+     */
+    public function setType($type = null) :LarapexChart
     {
         $this->type = $type;
         return $this;
     }
 
-    public function setDataset($dataset)
+    public function setDataset($dataset): LarapexChart
     {
         $this->dataset = json_encode($dataset);
         return $this;
     }
 
-    public function setHeight(int $height)
+    public function setHeight(int $height) :LarapexChart
     {
         $this->height = $height;
         return $this;
     }
 
-    public function setColors(array $colors)
+    public function setWidth(int $width) :LarapexChart
+    {
+        $this->width = $width;
+        return $this;
+    }
+
+    public function setColors(array $colors) :LarapexChart
     {
         $this->colors = json_encode($colors);
         return $this;
     }
 
-    public function setHorizontal(bool $horizontal)
+    public function setHorizontal(bool $horizontal) :LarapexChart
     {
         $this->horizontal = json_encode(['horizontal' => $horizontal]);
         return $this;
     }
 
-    public function setTitle(string $title)
+    public function setTitle(string $title) :LarapexChart
     {
         $this->title = $title;
         return $this;
     }
 
-    public function setSubtitle(string $subtitle, string $position = 'left')
+    public function setSubtitle(string $subtitle, string $position = 'left') :LarapexChart
     {
         $this->subtitle = $subtitle;
         $this->subtitlePosition = $position;
         return $this;
     }
 
-    public function setLabels(array $labels)
+    public function setLabels(array $labels) :LarapexChart
     {
-        $this->labels = $this->transformLabels($labels);
+//        $this->labels = $this->transformLabels($labels);
+        $this->labels = $labels;
         return $this;
     }
 
-    public function setXAxis(array $categories)
+    public function setXAxis(array $categories) :LarapexChart
     {
         $this->xAxis = json_encode($categories);
         return $this;
     }
 
-    public function setGrid($transparent = true, $color = '#e5e5e5', $opacity = 0.1)
+    public function setGrid($transparent = true, $color = '#e5e5e5', $opacity = 0.1) :LarapexChart
     {
         if($transparent) {
             $this->grid = json_encode(['show' => true]);
@@ -121,7 +199,7 @@ class LarapexChart
         return $this;
     }
 
-    public function setMarkers($colors = [], $width = 4, $hoverSize = 7)
+    public function setMarkers($colors = [], $width = 4, $hoverSize = 7) :LarapexChart
     {
         if(empty($colors)) {
             $colors = config('larapex-charts.colors');
@@ -140,7 +218,7 @@ class LarapexChart
         return $this;
     }
 
-    public function setStroke(int $width, array $colors = [])
+    public function setStroke(int $width, array $colors = []) :LarapexChart
     {
         if(empty($colors)) {
             $colors = config('larapex-charts.colors');
@@ -154,38 +232,54 @@ class LarapexChart
         return $this;
     }
 
-    public function setToolbar(bool $show, $zoom = true)
+    public function setToolbar(bool $show, bool $zoom = true) :LarapexChart
     {
         $this->toolbar = json_encode(['show' => $show]);
         $this->zoom = json_encode(['enabled' => $zoom ? $zoom : false]);
         return $this;
     }
 
-    public function setDataLabels(bool $enabled)
+    public function setDataLabels(bool $enabled) :LarapexChart
     {
         $this->dataLabels = json_encode(['enabled' => $enabled]);
         return $this;
     }
 
+    /*
+    |--------------------------------------------------------------------------
+    | Getters
+    |--------------------------------------------------------------------------
+    */
+
+    /**
+     * @param array $array
+     * @return array|false|string
+     */
     public function transformLabels(array $array)
     {
         $stringArray = array_filter($array, function($string){
             return "{$string}";
         });
-        return '"' . implode('","', $stringArray) . '"';
+        return json_encode(['"' . implode('","', $stringArray) . '"']);
     }
 
+    /**
+     * @return mixed
+     */
     public function container()
     {
         return View::make('larapex-charts::chart.container', ['id' => $this->id()]);
     }
 
+    /**
+     * @return mixed
+     */
     public function script()
     {
         return View::make('larapex-charts::chart.script', ['chart' => $this]);
     }
 
-    public function cdn()
+    public static function cdn() :string
     {
         return 'https://cdn.jsdelivr.net/npm/apexcharts';
     }
@@ -252,6 +346,16 @@ class LarapexChart
     public function height()
     {
         return $this->height;
+    }
+
+    public function widthForBladeViews() :string
+    {
+        return $this->width ? $this->width : '100%';
+    }
+
+    public function widthForJsonOutput() :int
+    {
+        return $this->width ? $this->width : self::DEFAULT_WIDTH;
     }
 
     /**
@@ -324,6 +428,98 @@ class LarapexChart
     public function dataLabels()
     {
         return $this->dataLabels;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | JSON Helper
+    |--------------------------------------------------------------------------
+    */
+
+    public function toJson()
+    {
+        $options = [
+            'chart' => [
+                'type' => $this->type(),
+                'height' => $this->height(),
+                'width' => $this->widthForJsonOutput(),
+                'toolbar' => json_decode($this->toolbar()),
+                'zoom' => json_decode($this->zoom()),
+            ],
+            'plotOptions' => [
+                'bar' => json_decode($this->horizontal()),
+            ],
+            'colors' => json_decode($this->colors()),
+            'series' => json_decode($this->dataset()),
+            'dataLabels' => json_decode($this->dataLabels()),
+            'labels' => $this->labels(),
+            'title' => [
+                'text' => $this->title()
+            ],
+            'subtitle' => [
+                'text' => $this->subtitle() ? $this->subtitle() : '',
+                'align' => $this->subtitlePosition() ? $this->subtitlePosition() : '',
+            ],
+            'xaxis' => [
+                'categories' => json_decode($this->xAxis()),
+            ],
+            'grid' => json_decode($this->grid()),
+            'markers' => json_decode($this->markers()),
+        ];
+
+        if($this->stroke()) {
+            $options['stroke'] = json_decode($this->stroke());
+        }
+
+        return response()->json([
+            'id' => $this->id(),
+            'options' => $options,
+        ]);
+    }
+
+    public function toInertia() :array
+    {
+        $options = [
+            'chart' => [
+                'height' => $this->height(),
+                'toolbar' => json_decode($this->toolbar()),
+                'zoom' => json_decode($this->zoom()),
+            ],
+            'plotOptions' => [
+                'bar' => json_decode($this->horizontal()),
+            ],
+            'colors' => json_decode($this->colors()),
+            'dataLabels' => json_decode($this->dataLabels()),
+            'labels' => $this->labels(),
+            'title' => [
+                'text' => $this->title()
+            ],
+            'subtitle' => [
+                'text' => $this->subtitle() ? $this->subtitle() : '',
+                'align' => $this->subtitlePosition() ? $this->subtitlePosition() : '',
+            ],
+            'xaxis' => [
+                'categories' => json_decode($this->xAxis()),
+            ],
+            'grid' => json_decode($this->grid()),
+            'markers' => json_decode($this->markers()),
+        ];
+
+        if($this->stroke()) {
+            $options['stroke'] = json_decode($this->stroke());
+        }
+
+        return [
+            'width' => $this->widthForJsonOutput(),
+            'type' => $this->type(),
+            'options' => $options,
+            'series' => json_decode($this->dataset()),
+        ];
+    }
+
+    public function toVueApexCharts() :array
+    {
+        return $this->toInertia();
     }
 
 }

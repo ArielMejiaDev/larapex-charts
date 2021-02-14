@@ -4,7 +4,7 @@
         chart: {
             type: '{!! $chart->type() !!}',
             height: {!! $chart->height() !!},
-            width: '{!! $chart->widthForBladeViews() !!}',
+            width: '{!! $chart->width() !!}',
             toolbar: {!! $chart->toolbar() !!},
             zoom: {!! $chart->zoom() !!}
         },
@@ -14,7 +14,9 @@
         colors: {!! $chart->colors() !!},
         series: {!! $chart->dataset() !!},
         dataLabels: {!! $chart->dataLabels() !!},
-        labels: {!! $chart->transformLabels($chart->labels()) !!},
+        @if($chart->labels())
+            labels: {!! json_encode($chart->labels(), true) !!},
+        @endif
         title: {
             text: "{!! $chart->title() !!}"
         },

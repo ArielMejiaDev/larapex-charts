@@ -1,8 +1,5 @@
 # Larapex Charts
 
-
-
-
 <p align="center">
  
 [![MadeWithLaravel.com shield](https://madewithlaravel.com/storage/repo-shields/2175-shield.svg)](https://madewithlaravel.com/p/larapex-charts/shield-link)
@@ -17,7 +14,7 @@
   
 </p>
 
-A Laravel wrapper for apex charts library.
+A Laravel wrapper for apex charts library Check the documentation on: [Larapex Chart Docs](https://larapex-charts.netlify.app/).
 
 ## Installation
 
@@ -96,7 +93,7 @@ You can create a variety of charts including: Line, Area, Bar, Horizantal Bar, H
 
 ## More examples
 
-Check the documentation on: [Larapex Chart Docs](https://arielmejiadev.github.io/LarapexCharts-Documentation/)
+Check the documentation on: [Larapex Chart Docs](https://larapex-charts.netlify.app/)
 
 ## Contributing
 
@@ -104,3 +101,11 @@ The author Ariel Mejia Dev.
 
 ## License
 [MIT](./LICENSE.md)
+
+## Support the project
+
+Hey 👋 thanks for considering making a donation, with these donations I can continue working to contribute to opensource projects.
+
+<a href="https://www.buymeacoffee.com/arielmejiadev">
+    <img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=arielmejiadev&button_colour=FF5F5F&font_colour=ffffff&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00">
+</a>

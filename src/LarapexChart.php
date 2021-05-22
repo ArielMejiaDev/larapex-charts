@@ -21,6 +21,7 @@ class LarapexChart
     protected $subtitlePosition;
     protected $type = 'donut';
     protected $labels;
+    protected $fontFamily;
     protected $dataset;
     protected $height = 500;
     protected $width;
@@ -122,6 +123,12 @@ class LarapexChart
         $this->type = $type;
         return $this;
     }
+
+	public function setFontFamily($fontFamily) :LarapexChart
+	{
+		$this->fontFamily = $fontFamily;
+		return $this;
+	}
 
     public function setDataset($dataset): LarapexChart
     {
@@ -320,6 +327,14 @@ class LarapexChart
         return $this->type;
     }
 
+	/**
+	 * @return string
+	 */
+	public function fontFamily()
+	{
+		return $this->fontFamily;
+	}
+
     /**
      * @return mixed
      */
@@ -434,6 +449,7 @@ class LarapexChart
                 'type' => $this->type(),
                 'height' => $this->height(),
                 'width' => $this->width(),
+				'fontFamily' => $this->fontFamily(),
                 'toolbar' => json_decode($this->toolbar()),
                 'zoom' => json_decode($this->zoom()),
             ],
@@ -477,6 +493,7 @@ class LarapexChart
             'chart' => [
                 'height' => $this->height(),
                 'toolbar' => json_decode($this->toolbar()),
+				'fontFamily' => $this->fontFamily(),
                 'zoom' => json_decode($this->zoom()),
             ],
             'plotOptions' => [

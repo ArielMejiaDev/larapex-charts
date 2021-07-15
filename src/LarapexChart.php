@@ -179,9 +179,9 @@ class LarapexChart
         return $this;
     }
 
-    public function setXAxis(array $categories) :LarapexChart
-    {
-        $this->xAxis = json_encode($categories);
+    public function setXAxis(array $categories, string $type = 'category') :LarapexChart
+    {   
+        $this->xAxis = json_encode(['type' => $type , 'categories' => $categories]);
         return $this;
     }
 

@@ -27,7 +27,6 @@ class ChartsTest extends TestCase
             ->setXAxis(['Jan', 'Feb', 'Mar'])
             ->setDataset([150, 120]);
 
-        $this->assertEquals($chart, $chart->script()['chart']);
         $this->assertEquals('pie', $chart->type());
     }
 
@@ -39,7 +38,6 @@ class ChartsTest extends TestCase
             ->setXAxis(['Jan', 'Feb', 'Mar'])
             ->setDataset([150, 120]);
 
-        $this->assertEquals($chart, $chart->script()['chart']);
         $this->assertEquals('donut', $chart->type());
     }
 
@@ -51,7 +49,6 @@ class ChartsTest extends TestCase
             ->setXAxis(['Jan', 'Feb', 'Mar'])
             ->setDataset([60, 40, 79]);
 
-        $this->assertEquals($chart, $chart->script()['chart']);
         $this->assertEquals('radialBar', $chart->type());
     }
 
@@ -63,7 +60,6 @@ class ChartsTest extends TestCase
             ->setXAxis(['Jan', 'Feb', 'Mar'])
             ->setDataset([60, 40, 79]);
 
-        $this->assertEquals($chart, $chart->script()['chart']);
         $this->assertEquals('polarArea', $chart->type());
     }
 
@@ -86,8 +82,6 @@ class ChartsTest extends TestCase
             ->setGrid(true)
             ->setStroke(1);
 
-        $this->assertEquals($chart->id(), $chart->container()['id']);
-        $this->assertEquals( $chart, $chart->script()['chart']);
         $this->assertEquals('line', $chart->type());
     }
 
@@ -111,8 +105,6 @@ class ChartsTest extends TestCase
                 ]
             ]);
 
-        $this->assertEquals($chart->id(), $chart->container()['id']);
-        $this->assertEquals($chart, $chart->script()['chart']);
         $this->assertEquals('area', $chart->type());
     }
 
@@ -149,7 +141,7 @@ class ChartsTest extends TestCase
                 ]
             ]);
 
-        $this->assertEquals($chart, $chart->script()['chart']);
+        $this->assertEquals('bar', $chart->type());
     }
 
     /** @test */
@@ -174,7 +166,9 @@ class ChartsTest extends TestCase
                 ]
             ]);
 
-        $this->assertEquals($chart, $chart->script()['chart']);
+        $this->assertEquals('bar', $chart->type());
+        $horizontalOrientationOfChart = json_decode($chart->horizontal(), 1)['horizontal'];
+        $this->assertTrue($horizontalOrientationOfChart);
     }
 
     /** @test */
@@ -196,7 +190,7 @@ class ChartsTest extends TestCase
                 ]
             ]);
 
-        $this->assertEquals($chart, $chart->script()['chart']);
+        $this->assertEquals('heatmap', $chart->type());
     }
     
     /** @test */
@@ -218,7 +212,6 @@ class ChartsTest extends TestCase
                 ]
             ]);
 
-        $this->assertEquals($chart, $chart->script()['chart']);
         $this->assertEquals('radar', $chart->type());
     }
 }

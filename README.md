@@ -8,6 +8,8 @@
 
 [![Total Downloads](https://poser.pugx.org/arielmejiadev/larapex-charts/downloads)](https://packagist.org/packages/arielmejiadev/larapex-charts)
 
+![GitHub Actions](https://github.com/arielmejiadev/larapex-charts/actions/workflows/main.yml/badge.svg)
+
 [![Latest Unstable Version](https://poser.pugx.org/arielmejiadev/larapex-charts/v/unstable)](https://packagist.org/packages/arielmejiadev/larapex-charts)
 
 [![License](https://poser.pugx.org/arielmejiadev/larapex-charts/license)](https://packagist.org/packages/arielmejiadev/larapex-charts)
@@ -109,3 +111,10 @@ Hey 👋 thanks for considering making a donation, with these donations I can co
 <a href="https://www.buymeacoffee.com/arielmejiadev">
     <img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=arielmejiadev&button_colour=FF5F5F&font_colour=ffffff&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00">
 </a>
+
+## To do for version 4
+
+- [ ] Add blade directive `@apexchartscdn`
+- [ ] Add blade directive `@script($chart)`
+- [ ] Add a command to generate a blade component with the boilerplate directives just to include it on any blade file.
+- [ ] Add a command to generate a vue component with all the boilerplate to just pass a `chart` prop and include the component on any vue component.

@@ -22,6 +22,7 @@ class LarapexChart
     protected $type = 'donut';
     protected $labels;
     protected $fontFamily;
+    protected $foreColor;
     protected $dataset;
     protected $height = 500;
     protected $width;
@@ -53,6 +54,8 @@ class LarapexChart
         $this->toolbar = json_encode(['show' => false]);
         $this->zoom = json_encode(['enabled' => true]);
         $this->dataLabels = json_encode(['enabled' => false]);
+        $this->fontFamily = json_encode(config('larapex-charts.font_family'));
+        $this->foreColor = config('larapex-charts.font_color');
         return $this;
     }
 
@@ -129,6 +132,12 @@ class LarapexChart
 		$this->fontFamily = $fontFamily;
 		return $this;
 	}
+
+    public function setFontColor($fontColor) :LarapexChart
+    {
+        $this->foreColor = $fontColor;
+        return $this;
+    }
 
     public function setDataset($dataset): LarapexChart
     {
@@ -336,6 +345,14 @@ class LarapexChart
 	}
 
     /**
+     * @return string
+     */
+    public function foreColor()
+    {
+        return $this->foreColor;
+    }
+
+    /**
      * @return mixed
      */
     public function labels()
@@ -449,9 +466,10 @@ class LarapexChart
                 'type' => $this->type(),
                 'height' => $this->height(),
                 'width' => $this->width(),
-				'fontFamily' => $this->fontFamily(),
                 'toolbar' => json_decode($this->toolbar()),
                 'zoom' => json_decode($this->zoom()),
+                'fontFamily' => json_decode($this->fontFamily()),
+                'foreColor' => $this->foreColor(),
             ],
             'plotOptions' => [
                 'bar' => json_decode($this->horizontal()),
@@ -493,8 +511,9 @@ class LarapexChart
             'chart' => [
                 'height' => $this->height(),
                 'toolbar' => json_decode($this->toolbar()),
-				'fontFamily' => $this->fontFamily(),
                 'zoom' => json_decode($this->zoom()),
+                'fontFamily' => json_decode($this->fontFamily()),
+                'foreColor' => $this->foreColor(),
             ],
             'plotOptions' => [
                 'bar' => json_decode($this->horizontal()),

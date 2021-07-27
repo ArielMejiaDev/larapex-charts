@@ -6,7 +6,9 @@
             height: {!! $chart->height() !!},
             width: '{!! $chart->width() !!}',
             toolbar: {!! $chart->toolbar() !!},
-            zoom: {!! $chart->zoom() !!}
+            zoom: {!! $chart->zoom() !!},
+            fontFamily: '{!! $chart->fontFamily() !!}',
+            foreColor: '{!! $chart->foreColor() !!}'
         },
         plotOptions: {
             bar: {!! $chart->horizontal() !!}

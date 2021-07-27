@@ -1,0 +1,26 @@
+<?php
+
+namespace {{ namespace }};
+
+use ArielMejiaDev\LarapexCharts\LarapexChart;
+
+class {{ class }}
+{
+    protected $chart;
+
+    public function __construct(LarapexChart $chart)
+    {
+        $this->chart = $chart;
+    }
+
+    public function build(): array
+    {
+        return $this->chart->radialChart()
+            ->setTitle('Passing effectiveness.')
+            ->setSubtitle('Barcelona city vs Madrid sports.')
+            ->addData([75, 60])
+            ->setLabels(['Barcelona city', 'Madrid sports'])
+            ->setColors(['#D32F2F', '#03A9F4'])
+            ->toVue();
+    }
+}

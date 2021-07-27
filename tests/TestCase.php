@@ -1,6 +1,5 @@
 <?php namespace ArielMejiaDev\LarapexCharts\Tests;
 
-use ArielMejiaDev\LarapexCharts\LarapexChartsRouteServiceProvider;
 use Orchestra\Testbench\TestCase as TestbenchTestCase;
 use ArielMejiaDev\LarapexCharts\LarapexChartsServiceProvider;
 
@@ -22,7 +21,7 @@ class TestCase extends TestbenchTestCase
     }
 
     // set providers to test the class
-    protected function getPackageProviders($app)
+    protected function getPackageProviders($app): array
     {
         return [
             LarapexChartsServiceProvider::class,
@@ -30,7 +29,7 @@ class TestCase extends TestbenchTestCase
     }
 
     // With this method I can use the facade instead of all class namespace
-    protected function getPackageAliases($app)
+    protected function getPackageAliases($app): array
     {
         return [
             'FirstPackage' => \ArielMejiaDev\LarapexCharts\Facades\LarapexChart::class

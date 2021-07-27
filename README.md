@@ -10,8 +10,6 @@
 
 ![GitHub Actions](https://github.com/arielmejiadev/larapex-charts/actions/workflows/main.yml/badge.svg)
 
-[![Latest Unstable Version](https://poser.pugx.org/arielmejiadev/larapex-charts/v/unstable)](https://packagist.org/packages/arielmejiadev/larapex-charts)
-
 [![License](https://poser.pugx.org/arielmejiadev/larapex-charts/license)](https://packagist.org/packages/arielmejiadev/larapex-charts)
   
 </p>

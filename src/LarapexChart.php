@@ -1,9 +1,11 @@
 <?php namespace ArielMejiaDev\LarapexCharts;
 
+use ArielMejiaDev\LarapexCharts\Traits\HasOptions;
 use Illuminate\Support\Facades\View;
 
 class LarapexChart
 {
+    use HasOptions;
     /*
     |--------------------------------------------------------------------------
     | Chart

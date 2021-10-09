@@ -46,7 +46,7 @@ class LarapexChartsServiceProvider extends ServiceProvider
         ], 'larapex-charts-config');
 
         // Publishing commands
-        (new Filesystem)->copyDirectory(__DIR__.'/../stubs/Console/Commands', app_path('Console/Commands'));
+        //(new Filesystem)->copyDirectory(__DIR__.'/../stubs/Console/Commands', app_path('Console/Commands'));
 
         // Publishing stubs
         (new Filesystem)->copyDirectory(__DIR__.'/../stubs/stubs', base_path('stubs'));

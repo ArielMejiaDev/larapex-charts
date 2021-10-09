@@ -49,7 +49,7 @@ class LarapexChartsServiceProvider extends ServiceProvider
         //(new Filesystem)->copyDirectory(__DIR__.'/../stubs/Console/Commands', app_path('Console/Commands'));
 
         // Publishing stubs
-        (new Filesystem)->copyDirectory(__DIR__.'/../stubs/stubs', base_path('stubs'));
+        //(new Filesystem)->copyDirectory(__DIR__.'/../stubs/stubs', base_path('stubs'));
 
     }
 

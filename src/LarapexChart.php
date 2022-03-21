@@ -35,6 +35,7 @@ class LarapexChart
     protected $toolbar;
     protected $zoom;
     protected $dataLabels;
+    protected $theme;
     private $chartLetters = 'abcdefghijklmnopqrstuvwxyz';
 
     /*
@@ -56,6 +57,7 @@ class LarapexChart
         $this->dataLabels = json_encode(['enabled' => false]);
         $this->fontFamily = json_encode(config('larapex-charts.font_family'));
         $this->foreColor = config('larapex-charts.font_color');
+        $this->theme = 'light';
         return $this;
     }
 
@@ -254,6 +256,12 @@ class LarapexChart
     public function setDataLabels(bool $enabled = true) :LarapexChart
     {
         $this->dataLabels = json_encode(['enabled' => $enabled]);
+        return $this;
+    }
+
+    public function setTheme(string $theme) :LarapexChart
+    {
+        $this->theme = $theme;
         return $this;
     }
 
@@ -477,6 +485,9 @@ class LarapexChart
             'colors' => json_decode($this->colors()),
             'series' => json_decode($this->dataset()),
             'dataLabels' => json_decode($this->dataLabels()),
+            'theme' => [
+                'mode' => $this->theme
+            ],
             'title' => [
                 'text' => $this->title()
             ],
@@ -520,6 +531,9 @@ class LarapexChart
             ],
             'colors' => json_decode($this->colors()),
             'dataLabels' => json_decode($this->dataLabels()),
+            'theme' => [
+                'mode' => $this->theme
+            ],
             'title' => [
                 'text' => $this->title()
             ],

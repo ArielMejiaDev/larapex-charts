@@ -35,6 +35,7 @@ class LarapexChart
     protected $toolbar;
     protected $zoom;
     protected $dataLabels;
+    protected $sparklines;
     private $chartLetters = 'abcdefghijklmnopqrstuvwxyz';
 
     /*
@@ -54,6 +55,7 @@ class LarapexChart
         $this->toolbar = json_encode(['show' => false]);
         $this->zoom = json_encode(['enabled' => true]);
         $this->dataLabels = json_encode(['enabled' => false]);
+        $this->sparklines = json_encode(['enabled' => false]);
         $this->fontFamily = json_encode(config('larapex-charts.font_family'));
         $this->foreColor = config('larapex-charts.font_color');
         return $this;
@@ -257,6 +259,12 @@ class LarapexChart
         return $this;
     }
 
+    public function setSparklines(bool $enabled = true): LarapexChart
+    {
+        $this->sparklines = json_encode(['enabled' => $enabled]);
+        return $this;
+    }
+
     /*
     |--------------------------------------------------------------------------
     | Getters
@@ -453,6 +461,14 @@ class LarapexChart
         return $this->dataLabels;
     }
 
+    /**
+     * @return true|boolean
+     */
+    public function sparklines()
+    {
+        return $this->sparklines;
+    }
+
     /*
     |--------------------------------------------------------------------------
     | JSON Helper
@@ -470,6 +486,7 @@ class LarapexChart
                 'zoom' => json_decode($this->zoom()),
                 'fontFamily' => json_decode($this->fontFamily()),
                 'foreColor' => $this->foreColor(),
+                'sparklines' => $this->sparklines(),
             ],
             'plotOptions' => [
                 'bar' => json_decode($this->horizontal()),
@@ -514,6 +531,7 @@ class LarapexChart
                 'zoom' => json_decode($this->zoom()),
                 'fontFamily' => json_decode($this->fontFamily()),
                 'foreColor' => $this->foreColor(),
+                'sparkline' => json_decode($this->sparklines()),
             ],
             'plotOptions' => [
                 'bar' => json_decode($this->horizontal()),

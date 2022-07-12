@@ -184,6 +184,34 @@ class ChartsTest extends TestCase
     }
 
     /** @test */
+    public function it_tests_larapex_charts_can_render_stacked_bar_chart()
+    {
+        $chart = (new LarapexChart)->barChart()
+            ->setTitle('Net Profit')
+            ->setStacked(true)
+            ->setXAxis(['Jan', 'Feb', 'Mar'])
+            ->setDataset([
+                [
+                    'name'  => 'Company A',
+                    'data'  =>  [500, 1000, 1900]
+                ],
+                [
+                    'name'  => 'Company B',
+                    'data'  => [300, 900, 1400]
+                ],
+                [
+                    'name'  => 'Company C',
+                    'data'  => [430, 245, 500]
+                ]
+            ]);
+
+        $this->assertEquals($chart->id(), $chart->container()['id']);
+        $this->assertEquals($chart, $chart->script()['chart']);
+        $this->assertEquals('bar', $chart->type());
+        $this->assertTrue($chart->stacked());
+    }
+
+    /** @test */
     public function it_tests_larapex_charts_can_render_heatmap_chart()
     {
         $chart = (new LarapexChart)->heatMapChart()
@@ -206,7 +234,7 @@ class ChartsTest extends TestCase
         $this->assertEquals($chart, $chart->script()['chart']);
         $this->assertEquals('heatmap', $chart->type());
     }
-    
+
     /** @test */
     public function it_tests_larapex_charts_can_render_radar_chart()
     {

@@ -486,6 +486,7 @@ class LarapexChart
                 'zoom' => json_decode($this->zoom()),
                 'fontFamily' => json_decode($this->fontFamily()),
                 'foreColor' => $this->foreColor(),
+                'sparklines' => $this->sparklines(),
             ],
             'plotOptions' => [
                 'bar' => json_decode($this->horizontal()),
@@ -530,6 +531,7 @@ class LarapexChart
                 'zoom' => json_decode($this->zoom()),
                 'fontFamily' => json_decode($this->fontFamily()),
                 'foreColor' => $this->foreColor(),
+                'sparkline' => json_decode($this->sparklines()),
             ],
             'plotOptions' => [
                 'bar' => json_decode($this->horizontal()),

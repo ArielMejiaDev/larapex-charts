@@ -9,6 +9,7 @@
             fontFamily: '{!! $chart->fontFamily() !!}',
             foreColor: '{!! $chart->foreColor() !!}',
             stacked: {!! $chart->stacked() !!}
+            sparkline: {!! $chart->sparklines() !!}
         },
         plotOptions: {
             bar: {!! $chart->horizontal() !!}

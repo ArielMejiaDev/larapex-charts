@@ -8,7 +8,8 @@
             toolbar: {!! $chart->toolbar() !!},
             zoom: {!! $chart->zoom() !!},
             fontFamily: '{!! $chart->fontFamily() !!}',
-            foreColor: '{!! $chart->foreColor() !!}'
+            foreColor: '{!! $chart->foreColor() !!}',
+            sparkline: {!! $chart->sparklines() !!}
         },
         plotOptions: {
             bar: {!! $chart->horizontal() !!}

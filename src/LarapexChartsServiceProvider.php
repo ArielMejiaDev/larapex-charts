@@ -43,13 +43,15 @@ class LarapexChartsServiceProvider extends ServiceProvider
 
         $this->publishes([
             $this->packageBasePath('config/larapex-charts.php') => base_path('config/larapex-charts.php')
-        ], 'larapex-charts-config');
+        ], 'larapex-charts-config');        
 
-        // Publishing commands
-        (new Filesystem)->copyDirectory(__DIR__.'/../stubs/Console/Commands', app_path('Console/Commands'));
+        $this->publishes([
+            $this->packageBasePath('stubs/Console/Commands') => app_path('Console/Commands')
+        ], 'larapex-charts-commands');
 
-        // Publishing stubs
-        (new Filesystem)->copyDirectory(__DIR__.'/../stubs/stubs', base_path('stubs'));
+        $this->publishes([
+            $this->packageBasePath('stubs/stubs') => base_path('stubs')
+        ], 'larapex-charts-stubs');
 
     }
 

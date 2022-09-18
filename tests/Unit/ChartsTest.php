@@ -2,12 +2,15 @@
 
 use ArielMejiaDev\LarapexCharts\LarapexChart;
 use ArielMejiaDev\LarapexCharts\Tests\TestCase;
+use Illuminate\Support\Facades\Artisan;
 
 class ChartsTest extends TestCase
 {
     /** @test */
     public function it_tests_larapex_charts_install_add_chart_stubs()
     {
+        Artisan::call('vendor:publish --all');
+
         $chartTypes = collect([
             'PieChart',
             'DonutChart',
@@ -34,10 +37,6 @@ class ChartsTest extends TestCase
                 file_exists(base_path("stubs/charts/Json/{$chart}.stub"))
             );
         });
-
-        $this->assertTrue(
-            file_exists(app_path('Console/Commands/ChartMakeCommand.php'))
-        );
     }
 
     /** @test */

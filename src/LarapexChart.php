@@ -196,17 +196,13 @@ class LarapexChart
         return $this;
     }
 
-    public function setGrid($transparent = true, $color = '#e5e5e5', $opacity = 0.1) :LarapexChart
+    public function setGrid($color = '#e5e5e5', $opacity = 0.1) :LarapexChart
     {
-        if($transparent) {
-            $this->grid = json_encode(['show' => true]);
-            return $this;
-        }
-
         $this->grid = json_encode([
+            'show' => true,
             'row' => [
                 'colors' => [$color, 'transparent'],
-                'opacity' => $opacity ? $opacity : 0.5
+                'opacity' => $opacity,
             ],
         ]);
 

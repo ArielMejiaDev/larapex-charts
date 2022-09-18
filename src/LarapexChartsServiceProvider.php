@@ -22,6 +22,10 @@ class LarapexChartsServiceProvider extends ServiceProvider
         });
 
         $this->mergeConfigFrom($this->packageBasePath('config/larapex-charts.php'), 'larapex-charts');
+
+        $this->commands([
+            \ArielMejiaDev\LarapexCharts\Console\ChartMakeCommand::class,
+        ]);
     }
 
     /**
@@ -45,11 +49,9 @@ class LarapexChartsServiceProvider extends ServiceProvider
             $this->packageBasePath('config/larapex-charts.php') => base_path('config/larapex-charts.php')
         ], 'larapex-charts-config');
 
-        // Publishing commands
-        (new Filesystem)->copyDirectory(__DIR__.'/../stubs/Console/Commands', app_path('Console/Commands'));
-
-        // Publishing stubs
-        (new Filesystem)->copyDirectory(__DIR__.'/../stubs/stubs', base_path('stubs'));
+        $this->publishes([
+            $this->packageBasePath('stubs/stubs') => base_path('stubs')
+        ], 'larapex-charts-stubs');
 
     }
 

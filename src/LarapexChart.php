@@ -56,7 +56,7 @@ class LarapexChart
         $this->zoom = json_encode(['enabled' => true]);
         $this->dataLabels = json_encode(['enabled' => false]);
         $this->sparklines = json_encode(['enabled' => false]);
-        $this->fontFamily = json_encode(config('larapex-charts.font_family'));
+        $this->fontFamily = config('larapex-charts.font_family');
         $this->foreColor = config('larapex-charts.font_color');
         return $this;
     }

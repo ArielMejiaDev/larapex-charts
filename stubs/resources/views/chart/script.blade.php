@@ -9,7 +9,7 @@
             zoom: {!! $chart->zoom() !!},
             fontFamily: '{!! $chart->fontFamily() !!}',
             foreColor: '{!! $chart->foreColor() !!}',
-            sparkline: {!! $chart->sparklines() !!}
+            sparkline: {!! $chart->sparkline() !!}
         },
         plotOptions: {
             bar: {!! $chart->horizontal() !!}

@@ -35,7 +35,7 @@
         @if($chart->stroke())
             stroke: {!! $chart->stroke() !!},
         @endif
-    }
+    };
 
     var chart = new ApexCharts(document.querySelector("#{!! $chart->id() !!}"), options);
     chart.render();

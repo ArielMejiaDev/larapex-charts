@@ -9,9 +9,9 @@ class LarapexChart
     | Chart
     |--------------------------------------------------------------------------
     |
-    | This class build the chart by passing setters to the object, it will 
-    | use the method container and scripts to generate a JSON  
-    | in blade views, it works also with Vue JS components  
+    | This class build the chart by passing setters to the object, it will
+    | use the method container and scripts to generate a JSON
+    | in blade views, it works also with Vue JS components
     |
     */
 
@@ -28,6 +28,7 @@ class LarapexChart
     protected $width;
     protected $colors;
     protected $horizontal;
+    protected $barOptions;
     protected $xAxis;
     protected $grid;
     protected $markers;
@@ -47,7 +48,8 @@ class LarapexChart
     public function __construct()
     {
         $this->id = substr(str_shuffle(str_repeat($x = $this->chartLetters, ceil(25 / strlen($x)))), 1, 25);
-        $this->horizontal = json_encode(['horizontal' => false]);
+        $this->horizontal = ['horizontal' => false];
+        $this->barOptions = [];
         $this->colors = json_encode(config('larapex-charts.colors'));
         $this->setXAxis([]);
         $this->grid = json_encode(['show' => false]);
@@ -167,9 +169,16 @@ class LarapexChart
 
     public function setHorizontal(bool $horizontal) :LarapexChart
     {
-        $this->horizontal = json_encode(['horizontal' => $horizontal]);
+        $this->horizontal = ['horizontal' => $horizontal];
         return $this;
     }
+
+    public function setBarOptions(array $barOptions) :LarapexChart
+    {
+        $this->barOptions = $barOptions;
+        return $this;
+    }
+
 
     public function setTitle(string $title) :LarapexChart
     {
@@ -394,11 +403,28 @@ class LarapexChart
     }
 
     /**
+     * @return string
+     */
+    public function barOptions()
+    {
+        return $this->barOptions;
+    }
+
+    /**
      * @return false|string
      */
     public function horizontal()
     {
         return $this->horizontal;
+    }
+
+    /**
+     * @return string
+     */
+    public function plotOptionsBar()
+    {
+        $join_array = array_merge($this->barOptions, $this->horizontal);
+        return json_encode($join_array);
     }
 
     /**
@@ -485,7 +511,7 @@ class LarapexChart
                 'sparkline' => $this->sparkline(),
             ],
             'plotOptions' => [
-                'bar' => json_decode($this->horizontal()),
+                'bar' => json_decode($this->plotOptionsBar()),
             ],
             'colors' => json_decode($this->colors()),
             'series' => json_decode($this->dataset()),
@@ -530,7 +556,7 @@ class LarapexChart
                 'sparkline' => json_decode($this->sparkline()),
             ],
             'plotOptions' => [
-                'bar' => json_decode($this->horizontal()),
+                'bar' => json_decode($this->plotOptionsBar()),
             ],
             'colors' => json_decode($this->colors()),
             'dataLabels' => json_decode($this->dataLabels()),

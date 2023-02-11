@@ -12,7 +12,7 @@
             sparkline: {!! $chart->sparkline() !!}
         },
         plotOptions: {
-            bar: {!! $chart->horizontal() !!}
+            bar: {!! $chart->plotOptionsBar() !!}
         },
         colors: {!! $chart->colors() !!},
         series: {!! $chart->dataset() !!},

@@ -14,6 +14,9 @@
             foreColor: '{!! $chart->foreColor() !!}',
             sparkline: {!! $chart->sparkline() !!}
         },
+        @if($chart->noData())
+            noData: {!! $chart->noData() !!},
+        @endif
         plotOptions: {
             bar: {!! $chart->plotOptionsBar() !!}
         },

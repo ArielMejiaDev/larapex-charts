@@ -39,6 +39,7 @@ class LarapexChart
     protected $xAxisTicks = false;
     protected $xAxisLabels = false;
     protected $tooltip = false;
+    protected $noData = false;
     protected $grid;
     protected $markers;
     protected $stroke;
@@ -182,6 +183,12 @@ class LarapexChart
     public function setColors(array $colors) :LarapexChart
     {
         $this->colors = json_encode($colors);
+        return $this;
+    }
+
+    public function setNoData(array $nodata) :LarapexChart
+    {
+        $this->nodata = json_encode($nodata);
         return $this;
     }
 
@@ -456,6 +463,14 @@ class LarapexChart
     public function legend()
     {
         return $this->legend;
+    }
+
+    /**
+     * @return string
+     */
+    public function noData()
+    {
+        return $this->nodata;
     }
 
     /**

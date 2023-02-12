@@ -3,6 +3,9 @@
     {
         chart: {
             type: '{!! $chart->type() !!}',
+            @if($chart->background())
+                background: '{!! $chart->background() !!}',
+            @endif
             height: {!! $chart->height() !!},
             width: '{!! $chart->width() !!}',
             toolbar: {!! $chart->toolbar() !!},
@@ -13,6 +16,9 @@
         },
         plotOptions: {
             bar: {!! $chart->plotOptionsBar() !!}
+        },
+        legend: {
+            show: {!! $chart->legend() !!}
         },
         colors: {!! $chart->colors() !!},
         series: {!! $chart->dataset() !!},
@@ -29,6 +35,9 @@
         },
         xaxis: {
             categories: {!! $chart->xAxis() !!}
+        },
+        theme: {
+            mode: "{!! $chart->theme() !!}",
         },
         grid: {!! $chart->grid() !!},
         markers: {!! $chart->markers() !!},

@@ -26,9 +26,12 @@ class LarapexChart
     protected $dataset;
     protected $height = 500;
     protected $width;
+    protected $background = false;
+    protected $theme;
     protected $colors;
     protected $horizontal;
     protected $barOptions;
+    protected $legend;
     protected $xAxis;
     protected $grid;
     protected $markers;
@@ -50,7 +53,9 @@ class LarapexChart
         $this->id = substr(str_shuffle(str_repeat($x = $this->chartLetters, ceil(25 / strlen($x)))), 1, 25);
         $this->horizontal = ['horizontal' => false];
         $this->barOptions = [];
+        $this->legend = json_encode(['show' => true]);
         $this->colors = json_encode(config('larapex-charts.colors'));
+        $this->theme = 'light';
         $this->setXAxis([]);
         $this->grid = json_encode(['show' => false]);
         $this->markers = json_encode(['show' => false]);
@@ -161,9 +166,21 @@ class LarapexChart
         return $this;
     }
 
+    public function setBackground(string $background) :LarapexChart
+    {
+        $this->background = $background;
+        return $this;
+    }
+
     public function setColors(array $colors) :LarapexChart
     {
         $this->colors = json_encode($colors);
+        return $this;
+    }
+
+    public function setTheme(string $theme) :LarapexChart
+    {
+        $this->theme = $theme;
         return $this;
     }
 
@@ -196,6 +213,12 @@ class LarapexChart
     public function setLabels(array $labels) :LarapexChart
     {
         $this->labels = $labels;
+        return $this;
+    }
+
+    public function setLegend(array $legend) :LarapexChart
+    {
+        $this->legend = json_encode($legend);
         return $this;
     }
 
@@ -374,6 +397,14 @@ class LarapexChart
     }
 
     /**
+     * @return string
+     */
+    public function legend()
+    {
+        return $this->legend;
+    }
+
+    /**
      * @return mixed
      */
     public function dataset()
@@ -395,11 +426,27 @@ class LarapexChart
     }
 
     /**
+     * @return string
+     */
+    public function background()
+    {
+        return $this->background;
+    }
+
+    /**
      * @return false|string
      */
     public function colors()
     {
         return $this->colors;
+    }
+
+    /**
+     * @return false|string
+     */
+    public function theme()
+    {
+        return $this->theme;
     }
 
     /**
@@ -504,6 +551,7 @@ class LarapexChart
                 'type' => $this->type(),
                 'height' => $this->height(),
                 'width' => $this->width(),
+                'background' => $this->background(),
                 'toolbar' => json_decode($this->toolbar()),
                 'zoom' => json_decode($this->zoom()),
                 'fontFamily' => json_decode($this->fontFamily()),
@@ -528,6 +576,7 @@ class LarapexChart
             ],
             'grid' => json_decode($this->grid()),
             'markers' => json_decode($this->markers()),
+            'legend' => json_decode($this->legend()),
         ];
 
         if($this->labels()) {
@@ -550,6 +599,7 @@ class LarapexChart
             'chart' => [
                 'height' => $this->height(),
                 'toolbar' => json_decode($this->toolbar()),
+                'background' => $this->background(),
                 'zoom' => json_decode($this->zoom()),
                 'fontFamily' => json_decode($this->fontFamily()),
                 'foreColor' => $this->foreColor(),
@@ -572,6 +622,7 @@ class LarapexChart
             ],
             'grid' => json_decode($this->grid()),
             'markers' => json_decode($this->markers()),
+            'legend' => json_decode($this->legend()),
         ];
 
         if($this->labels()) {

@@ -33,6 +33,11 @@ class LarapexChart
     protected $barOptions;
     protected $legend;
     protected $xAxis;
+    protected $xAxisType = false;
+    protected $xAxisBorder = false;
+    protected $xAxisTicks = false;
+    protected $xAxisLabels = false;
+    protected $tooltip = false;
     protected $grid;
     protected $markers;
     protected $stroke;
@@ -178,6 +183,12 @@ class LarapexChart
         return $this;
     }
 
+    public function setTooltip(array $tooltip) :LarapexChart
+    {
+        $this->tooltip = json_encode($tooltip, JSON_FORCE_OBJECT);
+        return $this;
+    }
+
     public function setTheme(string $theme) :LarapexChart
     {
         $this->theme = $theme;
@@ -225,6 +236,30 @@ class LarapexChart
     public function setXAxis(array $categories) :LarapexChart
     {
         $this->xAxis = json_encode($categories);
+        return $this;
+    }
+
+    public function setXAxisBorder(array $xAxisBorder) :LarapexChart
+    {
+        $this->xAxisBorder = json_encode($xAxisBorder);
+        return $this;
+    }
+
+    public function setXAxisTicks(array $xAxisTicks) :LarapexChart
+    {
+        $this->xAxisTicks = json_encode($xAxisTicks);
+        return $this;
+    }
+
+    public function setXAxisType(string $xAxisType) :LarapexChart
+    {
+        $this->xAxisType = $xAxisType;
+        return $this;
+    }
+
+    public function setXAxisLabels(array $xAxisLabels) :LarapexChart
+    {
+        $this->xAxisLabels = json_encode($xAxisLabels);
         return $this;
     }
 
@@ -434,6 +469,14 @@ class LarapexChart
     }
 
     /**
+     * @return string
+     */
+    public function tooltip()
+    {
+        return $this->tooltip;
+    }
+
+    /**
      * @return false|string
      */
     public function colors()
@@ -480,6 +523,38 @@ class LarapexChart
     public function xAxis()
     {
         return $this->xAxis;
+    }
+
+    /**
+     * @return string
+     */
+    public function xAxisType()
+    {
+        return $this->xAxisType;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function xAxisTicks()
+    {
+        return $this->xAxisTicks;
+    }
+
+    /**
+     * @return array
+     */
+    public function xAxisBorder()
+    {
+        return $this->xAxisBorder;
+    }
+
+    /**
+     * @return array
+     */
+    public function xAxisLabels()
+    {
+        return $this->xAxisLabels;
     }
 
     /**

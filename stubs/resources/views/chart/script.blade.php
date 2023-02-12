@@ -34,11 +34,27 @@
             align: '{!! $chart->subtitlePosition() !!}'
         },
         xaxis: {
-            categories: {!! $chart->xAxis() !!}
+            categories: {!! $chart->xAxis() !!},
+            @if($chart->xAxisBorder())
+                axisBorder: {!! $chart->xAxisBorder() !!},
+            @endif
+            @if($chart->xAxisTicks())
+                axixTicks: {!! $chart->xAxisTicks() !!},
+            @endif
+            @if($chart->xAxisType())
+                type: "{!! $chart->xAxisType() !!}",
+            @endif
+            @if($chart->xAxisLabels())
+                labels: {!! $chart->xAxisLabels() !!}
+            @endif
+
         },
         theme: {
             mode: "{!! $chart->theme() !!}",
         },
+        @if($chart->tooltip())
+            tooltip: {!! $chart->tooltip() !!},
+        @endif
         grid: {!! $chart->grid() !!},
         markers: {!! $chart->markers() !!},
         @if($chart->stroke())

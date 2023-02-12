@@ -39,7 +39,7 @@
                 axisBorder: {!! $chart->xAxisBorder() !!},
             @endif
             @if($chart->xAxisTicks())
-                axixTicks: {!! $chart->xAxisTicks() !!},
+                axisTicks: {!! $chart->xAxisTicks() !!},
             @endif
             @if($chart->xAxisType())
                 type: "{!! $chart->xAxisType() !!}",
@@ -49,6 +49,9 @@
             @endif
 
         },
+        @if($chart->yAxis())
+            yaxis: {!! $chart->yAxis() !!},
+        @endif
         theme: {
             mode: "{!! $chart->theme() !!}",
         },

@@ -33,6 +33,7 @@ class LarapexChart
     protected $barOptions;
     protected $legend;
     protected $xAxis;
+    protected $yAxis = false;
     protected $xAxisType = false;
     protected $xAxisBorder = false;
     protected $xAxisTicks = false;
@@ -239,6 +240,12 @@ class LarapexChart
         return $this;
     }
 
+    public function setYAxis(array $yAxis) :LarapexChart
+    {
+        $this->yAxis = json_encode($yAxis);
+        return $this;
+    }
+
     public function setXAxisBorder(array $xAxisBorder) :LarapexChart
     {
         $this->xAxisBorder = json_encode($xAxisBorder);
@@ -263,16 +270,9 @@ class LarapexChart
         return $this;
     }
 
-    public function setGrid($color = '#e5e5e5', $opacity = 0.1) :LarapexChart
+    public function setGrid(array $grid) :LarapexChart
     {
-        $this->grid = json_encode([
-            'show' => true,
-            'row' => [
-                'colors' => [$color, 'transparent'],
-                'opacity' => $opacity,
-            ],
-        ]);
-
+        $this->grid = json_encode($grid);
         return $this;
     }
 
@@ -523,6 +523,14 @@ class LarapexChart
     public function xAxis()
     {
         return $this->xAxis;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function yAxis()
+    {
+        return $this->yAxis;
     }
 
     /**

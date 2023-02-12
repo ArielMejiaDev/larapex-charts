@@ -23,6 +23,9 @@
         colors: {!! $chart->colors() !!},
         series: {!! $chart->dataset() !!},
         dataLabels: {!! $chart->dataLabels() !!},
+        @if($chart->fill())
+            fill: {!! $chart->fill() !!},
+        @endif
         @if($chart->labels())
             labels: {!! json_encode($chart->labels(), true) !!},
         @endif

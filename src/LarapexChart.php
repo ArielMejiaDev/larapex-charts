@@ -45,6 +45,7 @@ class LarapexChart
     protected $toolbar;
     protected $zoom;
     protected $dataLabels;
+    protected $fill = false;
     protected $sparkline;
     private $chartLetters = 'abcdefghijklmnopqrstuvwxyz';
 
@@ -225,6 +226,12 @@ class LarapexChart
     public function setLabels(array $labels) :LarapexChart
     {
         $this->labels = $labels;
+        return $this;
+    }
+
+    public function setFill(array $fill) :LarapexChart
+    {
+        $this->fill = json_encode($fill);
         return $this;
     }
 
@@ -429,6 +436,14 @@ class LarapexChart
     public function labels()
     {
         return $this->labels;
+    }
+
+    /**
+     * @return string
+     */
+    public function fill()
+    {
+        return $this->fill;
     }
 
     /**

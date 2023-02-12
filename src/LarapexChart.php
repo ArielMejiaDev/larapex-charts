@@ -302,16 +302,20 @@ class LarapexChart
         return $this;
     }
 
-    public function setStroke(int $width, array $colors = []) :LarapexChart
+    public function setStroke(int $width, array $colors = [], string $curve) :LarapexChart
     {
         if(empty($colors)) {
             $colors = config('larapex-charts.colors');
+        }
+        if (empty($curve)) {
+            $curve = 'smooth';
         }
 
         $this->stroke = json_encode([
             'show'    =>  true,
             'width'   =>  $width,
             'colors'  =>  $colors,
+            'curve'   =>  $curve,
         ]);
         return $this;
     }

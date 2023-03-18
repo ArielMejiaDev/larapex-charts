@@ -1,9 +1,11 @@
 <?php namespace ArielMejiaDev\LarapexCharts;
 
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Traits\Macroable;
 
 class LarapexChart
 {
+    use Macroable;
     /*
     |--------------------------------------------------------------------------
     | Chart
@@ -36,6 +38,7 @@ class LarapexChart
     protected $zoom;
     protected $dataLabels;
     protected $sparkline;
+    protected $extraOptions;
     private $chartLetters = 'abcdefghijklmnopqrstuvwxyz';
 
     /*
@@ -198,13 +201,18 @@ class LarapexChart
 
     public function setGrid($color = '#e5e5e5', $opacity = 0.1) :LarapexChart
     {
-        $this->grid = json_encode([
-            'show' => true,
-            'row' => [
-                'colors' => [$color, 'transparent'],
-                'opacity' => $opacity,
-            ],
-        ]);
+        if (is_array($color)) {
+            $this->stroke = json_encode(array_replace_recursive($color));
+        }
+        else {
+            $this->grid = json_encode([
+                'show' => true,
+                'row' => [
+                    'colors' => [$color, 'transparent'],
+                    'opacity' => $opacity,
+                ],
+            ]);
+        }
 
         return $this;
     }
@@ -228,17 +236,22 @@ class LarapexChart
         return $this;
     }
 
-    public function setStroke(int $width, array $colors = []) :LarapexChart
+    public function setStroke(mixed $width, array $colors = []) :LarapexChart
     {
         if(empty($colors)) {
             $colors = config('larapex-charts.colors');
         }
 
-        $this->stroke = json_encode([
-            'show'    =>  true,
-            'width'   =>  $width,
-            'colors'  =>  $colors,
-        ]);
+        if (is_array($width)) {
+            $this->stroke = json_encode(array_replace_recursive($width));
+        }
+        else {
+            $this->stroke = json_encode([
+                'show'    =>  true,
+                'width'   =>  $width,
+                'colors'  =>  $colors,
+            ]);
+        };
         return $this;
     }
 
@@ -261,6 +274,13 @@ class LarapexChart
         return $this;
     }
 
+    public function setExtraOptions(array $extraOptions): LarapexChart
+    {
+        $this->extraOptions = json_encode($extraOptions);
+        return $this;
+    }
+
+
     /*
     |--------------------------------------------------------------------------
     | Getters
@@ -268,11 +288,16 @@ class LarapexChart
     */
 
     /**
+     * @deprecated unused
      * @param array $array
      * @return array|false|string
      */
     public function transformLabels(array $array)
     {
+        if ($this->labelTransformer) {
+            $array = array_filter($array, $this->labelTransformer);
+        }
+
         $stringArray = array_filter($array, function($string){
             return "{$string}";
         });
@@ -512,6 +537,8 @@ class LarapexChart
             $options['stroke'] = json_decode($this->stroke());
         }
 
+        $options = array_replace_recursive($options, json_decode($this->extraOptions, true));
+
         return response()->json([
             'id' => $this->id(),
             'options' => $options,
@@ -555,6 +582,9 @@ class LarapexChart
         if($this->stroke()) {
             $options['stroke'] = json_decode($this->stroke());
         }
+
+        if ($this->extraOptions)
+            $options = array_replace_recursive($options, json_decode($this->extraOptions, 1));
 
         return [
             'height' => $this->height(),

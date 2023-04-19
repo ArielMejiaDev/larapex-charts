@@ -31,7 +31,7 @@ class LarapexChart
     protected $xAxis;
     protected $grid;
     protected $markers;
-    protected $stacked = false;
+    protected bool $stacked = false;
     protected $stroke;
     protected $toolbar;
     protected $zoom;
@@ -460,7 +460,7 @@ class LarapexChart
         return $this->zoom;
     }
 
-    public function stacked()
+    public function stacked(): bool
     {
         return $this->stacked;
     }
@@ -545,7 +545,7 @@ class LarapexChart
                 'fontFamily' => json_decode($this->fontFamily()),
                 'foreColor' => $this->foreColor(),
                 'sparkline' => json_decode($this->sparkline()),
-                'stacked' => $this->stacked() ? 'true' : 'false',
+                'stacked' => $this->stacked(),
             ],
             'plotOptions' => [
                 'bar' => json_decode($this->horizontal()),

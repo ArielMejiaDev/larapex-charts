@@ -2,4 +2,6 @@ vendor
 composer.lock
 .phpunit.result.cache
 coverage
-.idea/*
+/.idea
+/.vscode
+.DS_Store

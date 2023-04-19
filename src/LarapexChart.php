@@ -9,9 +9,9 @@ class LarapexChart
     | Chart
     |--------------------------------------------------------------------------
     |
-    | This class build the chart by passing setters to the object, it will 
-    | use the method container and scripts to generate a JSON  
-    | in blade views, it works also with Vue JS components  
+    | This class build the chart by passing setters to the object, it will
+    | use the method container and scripts to generate a JSON
+    | in blade views, it works also with Vue JS components
     |
     */
 
@@ -31,12 +31,13 @@ class LarapexChart
     protected $xAxis;
     protected $grid;
     protected $markers;
+    protected $stacked = false;
     protected $stroke;
     protected $toolbar;
     protected $zoom;
     protected $dataLabels;
     protected $sparkline;
-    private $chartLetters = 'abcdefghijklmnopqrstuvwxyz';
+    private string $chartLetters = 'abcdefghijklmnopqrstuvwxyz';
 
     /*
     |--------------------------------------------------------------------------
@@ -261,6 +262,16 @@ class LarapexChart
         return $this;
     }
 
+    /**
+     * @param bool $stacked
+     * @return $this
+     */
+    public function setStacked(bool $stacked): LarapexChart
+    {
+        $this->stacked = $stacked;
+        return $this;
+    }
+
     /*
     |--------------------------------------------------------------------------
     | Getters
@@ -449,6 +460,11 @@ class LarapexChart
         return $this->zoom;
     }
 
+    public function stacked()
+    {
+        return $this->stacked;
+    }
+
     /**
      * @return true|boolean
      */
@@ -483,6 +499,7 @@ class LarapexChart
                 'fontFamily' => json_decode($this->fontFamily()),
                 'foreColor' => $this->foreColor(),
                 'sparkline' => $this->sparkline(),
+                'stacked' => $this->stacked(),
             ],
             'plotOptions' => [
                 'bar' => json_decode($this->horizontal()),
@@ -528,6 +545,7 @@ class LarapexChart
                 'fontFamily' => json_decode($this->fontFamily()),
                 'foreColor' => $this->foreColor(),
                 'sparkline' => json_decode($this->sparkline()),
+                'stacked' => $this->stacked() ? 'true' : 'false',
             ],
             'plotOptions' => [
                 'bar' => json_decode($this->horizontal()),

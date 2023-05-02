@@ -179,8 +179,37 @@ class ChartsTest extends TestCase
         $this->assertEquals($chart->id(), $chart->container()['id']);
         $this->assertEquals($chart, $chart->script()['chart']);
         $this->assertEquals('bar', $chart->type());
-        $chartHorizontalOrientation = json_decode($chart->horizontal(), 1)['horizontal'];
+        $chartHorizontalOrientation = json_decode($chart->bar(), 1)['horizontal'];
         $this->assertTrue($chartHorizontalOrientation);
+    }
+
+    /** @test */
+    public function it_tests_larapex_charts_can_render_distributed_bar_chart()
+    {
+        $chart = (new LarapexChart)->barChart()
+            ->setTitle('Net Profit')
+            ->setdistributed(true)
+            ->setXAxis(['Jan', 'Feb', 'Mar'])
+            ->setDataset([
+                [
+                    'name'  => 'Company A',
+                    'data'  =>  [500, 1000, 1900]
+                ],
+                [
+                    'name'  => 'Company B',
+                    'data'  => [300, 900, 1400]
+                ],
+                [
+                    'name'  => 'Company C',
+                    'data'  => [430, 245, 500]
+                ]
+            ]);
+
+        $this->assertEquals($chart->id(), $chart->container()['id']);
+        $this->assertEquals($chart, $chart->script()['chart']);
+        $this->assertEquals('bar', $chart->type());
+        $chartDistributed = json_decode($chart->bar(), 1)['distributed'];
+        $this->assertTrue($chartDistributed);
     }
 
     /** @test */

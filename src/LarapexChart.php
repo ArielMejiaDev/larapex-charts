@@ -27,7 +27,9 @@ class LarapexChart
     protected $height = 500;
     protected $width;
     protected $colors;
-    protected $horizontal;
+    protected $horizontal = false;
+    protected $distributed = false;
+    protected $bar;
     protected $xAxis;
     protected $grid;
     protected $markers;
@@ -47,7 +49,7 @@ class LarapexChart
     public function __construct()
     {
         $this->id = substr(str_shuffle(str_repeat($x = $this->chartLetters, ceil(25 / strlen($x)))), 1, 25);
-        $this->horizontal = json_encode(['horizontal' => false]);
+        $this->bar = json_encode(['horizontal' => $this->horizontal, 'distributed' => $this->distributed]);
         $this->colors = json_encode(config('larapex-charts.colors'));
         $this->setXAxis([]);
         $this->grid = json_encode(['show' => false]);
@@ -165,10 +167,22 @@ class LarapexChart
         return $this;
     }
 
-    public function setHorizontal(bool $horizontal) :LarapexChart
+    public function setBar() :LarapexChart
     {
-        $this->horizontal = json_encode(['horizontal' => $horizontal]);
+        $this->bar = json_encode(['horizontal' => $this->horizontal, 'distributed' => $this->distributed]);
         return $this;
+    }
+
+    public function setHorizontal(bool $horizontal): LarapexChart
+    {
+        $this->horizontal = $horizontal;
+        return $this;
+    }
+
+    public function setDistributed(bool $distributed): LarapexChart
+    {
+        $this->distributed = $distributed;
+        return $this;       
     }
 
     public function setTitle(string $title) :LarapexChart
@@ -402,6 +416,23 @@ class LarapexChart
     }
 
     /**
+     * @return false|string
+     */
+    public function bar()
+    {
+        $this->setBar();
+        return $this->bar;
+    }
+
+    /**
+     * @return false|string
+     */
+    public function distributed()
+    {
+        return $this->distributed;
+    }
+
+    /**
      * @return mixed
      */
     public function xAxis()
@@ -485,7 +516,7 @@ class LarapexChart
                 'sparkline' => $this->sparkline(),
             ],
             'plotOptions' => [
-                'bar' => json_decode($this->horizontal()),
+                'bar' => json_decode($this->bar()),
             ],
             'colors' => json_decode($this->colors()),
             'series' => json_decode($this->dataset()),
@@ -524,13 +555,13 @@ class LarapexChart
             'chart' => [
                 'height' => $this->height(),
                 'toolbar' => json_decode($this->toolbar()),
-                'zoom' => json_decode($this->zoom()),
+                'zoom' => json_decode($this->zoowm()),
                 'fontFamily' => json_decode($this->fontFamily()),
                 'foreColor' => $this->foreColor(),
                 'sparkline' => json_decode($this->sparkline()),
             ],
             'plotOptions' => [
-                'bar' => json_decode($this->horizontal()),
+                'bar' => json_decode($this->bar()),
             ],
             'colors' => json_decode($this->colors()),
             'dataLabels' => json_decode($this->dataLabels()),

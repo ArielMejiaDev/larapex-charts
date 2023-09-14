@@ -186,9 +186,9 @@ class LarapexChart
         return $this;
     }
 
-    public function setNoData(array $nodata) :LarapexChart
+    public function setNoData(array $noData) :LarapexChart
     {
-        $this->nodata = json_encode($nodata);
+        $this->noData = json_encode($noData);
         return $this;
     }
 
@@ -470,7 +470,7 @@ class LarapexChart
      */
     public function noData()
     {
-        return $this->nodata;
+        return $this->noData;
     }
 
     /**

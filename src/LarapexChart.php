@@ -42,13 +42,14 @@ class LarapexChart
     protected $noData = false;
     protected $grid;
     protected $markers;
+    protected $stacked = false;
     protected $stroke;
     protected $toolbar;
     protected $zoom;
     protected $dataLabels;
     protected $fill = false;
     protected $sparkline;
-    private $chartLetters = 'abcdefghijklmnopqrstuvwxyz';
+    private string $chartLetters = 'abcdefghijklmnopqrstuvwxyz';
 
     /*
     |--------------------------------------------------------------------------

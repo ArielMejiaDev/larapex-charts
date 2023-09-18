@@ -42,7 +42,7 @@ class LarapexChart
     protected $noData = false;
     protected $grid;
     protected $markers;
-    protected $stacked = false;
+    protected bool $stacked = false;
     protected $stroke;
     protected $toolbar;
     protected $zoom;
@@ -460,7 +460,7 @@ class LarapexChart
         return $this->labels;
     }
 	
-    public function stacked()
+    public function stacked(): bool
     {
         return $this->stacked;
     }

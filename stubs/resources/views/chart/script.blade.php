@@ -10,9 +10,7 @@
             fontFamily: '{!! $chart->fontFamily() !!}',
             foreColor: '{!! $chart->foreColor() !!}',
             sparkline: {!! $chart->sparkline() !!},
-            @if($chart->stacked())
-            stacked: {!! $chart->stacked() !!},
-            @endif
+            {!! $chart->stacked() ? "stacked: ".json_encode($chart->stacked(), true) : '' !!}
         },
         plotOptions: {
             bar: {!! $chart->horizontal() !!}
@@ -20,9 +18,7 @@
         colors: {!! $chart->colors() !!},
         series: {!! $chart->dataset() !!},
         dataLabels: {!! $chart->dataLabels() !!},
-        @if($chart->labels())
-            labels: {!! json_encode($chart->labels(), true) !!},
-        @endif
+        {!! $chart->labels() ? "labels: ".json_encode($chart->labels(), true)."," : '' !!}
         title: {
             text: "{!! $chart->title() !!}"
         },
@@ -35,9 +31,7 @@
         },
         grid: {!! $chart->grid() !!},
         markers: {!! $chart->markers() !!},
-        @if($chart->stroke())
-            stroke: {!! $chart->stroke() !!},
-        @endif
+        {!! $chart->stroke() ? "stroke: ".json_encode($chart->stroke(), true) : '' !!}
     }
 
     var chart = new ApexCharts(document.querySelector("#{!! $chart->id() !!}"), options);

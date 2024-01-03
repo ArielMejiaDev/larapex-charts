@@ -22,7 +22,7 @@
         "ext-json": "*"
     },
     "require-dev": {
-        "orchestra/testbench": "^6.0|^7.0|^8.0",
+        "orchestra/testbench": "^7.0|^8.0",
         "phpunit/phpunit": "^9.0|^10.0",
         "nunomaduro/collision": "^7.5"
     },

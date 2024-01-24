@@ -9,7 +9,7 @@ class ChartsTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function it_tests_larapex_charts_can_render_pie_charts_by_default()
+    public function it_tests_larapex_charts_can_render_pie_charts_by_default(): void
     {
         $chart = (new LarapexChart)->setTitle('Users Test Chart');
         $this->assertEquals('donut', $chart->type());
@@ -18,7 +18,7 @@ class ChartsTest extends TestCase
     }
 
     /** @test */
-    public function it_tests_larapex_charts_can_render_pie_chart()
+    public function it_tests_larapex_charts_can_render_pie_chart(): void
     {
         $chart = (new LarapexChart)->pieChart()
             ->setTitle('Posts')
@@ -32,7 +32,7 @@ class ChartsTest extends TestCase
     }
 
     /** @test */
-    public function it_tests_larapex_charts_can_render_donut_chart()
+    public function it_tests_larapex_charts_can_render_donut_chart(): void
     {
         $chart = (new LarapexChart)->donutChart()
             ->setTitle('Posts')
@@ -44,7 +44,7 @@ class ChartsTest extends TestCase
     }
 
     /** @test */
-    public function it_tests_larapex_can_render_radial_bar_charts()
+    public function it_tests_larapex_can_render_radial_bar_charts(): void
     {
         $chart = (new LarapexChart)->radialChart()
             ->setTitle('Products with more profit')
@@ -56,7 +56,7 @@ class ChartsTest extends TestCase
     }
 
     /** @test */
-    public function it_tests_larapex_charts_can_render_polar_chart()
+    public function it_tests_larapex_charts_can_render_polar_chart(): void
     {
         $chart = (new LarapexChart)->polarAreaChart()
             ->setTitle('Products with more profit')
@@ -68,7 +68,7 @@ class ChartsTest extends TestCase
     }
 
     /** @test */
-    public function larapex_can_render_line_charts()
+    public function larapex_can_render_line_charts(): void
     {
         $chart = (new LarapexChart)->lineChart()
             ->setTitle('Total Users Monthly')
@@ -87,12 +87,12 @@ class ChartsTest extends TestCase
             ->setStroke(1);
 
         $this->assertEquals($chart->id(), $chart->container()['id']);
-        $this->assertEquals( $chart, $chart->script()['chart']);
+        $this->assertEquals($chart, $chart->script()['chart']);
         $this->assertEquals('line', $chart->type());
     }
 
     /** @test */
-    public function it_tests_larapex_charts_can_create_an_area_chart()
+    public function it_tests_larapex_charts_can_create_an_area_chart(): void
     {
         $chart = (new LarapexChart)->areaChart()
             ->setTitle('Total Users Monthly')
@@ -117,7 +117,7 @@ class ChartsTest extends TestCase
     }
 
     /** @test */
-    public function it_tests_larapex_charts_can_render_bar_charts()
+    public function it_tests_larapex_charts_can_render_bar_charts(): void
     {
         $chart = (new LarapexChart)->barChart()
             ->setTitle('Net Profit')
@@ -155,7 +155,35 @@ class ChartsTest extends TestCase
     }
 
     /** @test */
-    public function it_tests_larapex_charts_can_render_horizontal_bar_chart()
+    public function it_tests_larapex_charts_can_render_stacked_bar_chart(): void
+    {
+        $chart = (new LarapexChart)->barChart()
+            ->setTitle('Net Profit')
+            ->setStacked(true)
+            ->setXAxis(['Jan', 'Feb', 'Mar'])
+            ->setDataset([
+                [
+                    'name' => 'Company A',
+                    'data' => [500, 1000, 1900]
+                ],
+                [
+                    'name' => 'Company B',
+                    'data' => [300, 800, 1400]
+                ],
+                [
+                    'name' => 'Company C',
+                    'data' => [304, 231, 500]
+                ]
+            ]);
+
+        $this->assertEquals($chart->id(), $chart->container()['id']);
+        $this->assertEquals($chart, $chart->script()['chart']);
+        $this->assertEquals('bar', $chart->type());
+        $this->assertTrue($chart->stacked());
+    }
+
+    /** @test */
+    public function it_tests_larapex_charts_can_render_horizontal_bar_chart(): void
     {
         $chart = (new LarapexChart)->barChart()
             ->setTitle('Net Profit')
@@ -184,7 +212,7 @@ class ChartsTest extends TestCase
     }
 
     /** @test */
-    public function it_tests_larapex_charts_can_render_heatmap_chart()
+    public function it_tests_larapex_charts_can_render_heatmap_chart(): void
     {
         $chart = (new LarapexChart)->heatMapChart()
             ->setTitle('Total Users')
@@ -208,7 +236,7 @@ class ChartsTest extends TestCase
     }
     
     /** @test */
-    public function it_tests_larapex_charts_can_render_radar_chart()
+    public function it_tests_larapex_charts_can_render_radar_chart(): void
     {
         $chart = (new LarapexChart)->radarChart()
             ->setTitle('Total Users')

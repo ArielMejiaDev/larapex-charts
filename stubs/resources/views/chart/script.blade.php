@@ -8,7 +8,11 @@
             toolbar: {!! $chart->toolbar() !!},
             zoom: {!! $chart->zoom() !!},
             fontFamily: '{!! $chart->fontFamily() !!}',
-            foreColor: '{!! $chart->foreColor() !!}'
+            foreColor: '{!! $chart->foreColor() !!}',
+            sparkline: {!! $chart->sparkline() !!},
+            @if($chart->stacked())
+            stacked: {!! $chart->stacked() !!},
+            @endif
         },
         plotOptions: {
             bar: {!! $chart->horizontal() !!}

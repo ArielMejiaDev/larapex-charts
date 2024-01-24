@@ -11,7 +11,7 @@ class TestCase extends TestbenchTestCase
      * @param [type] $app
      * @return void
      */
-    protected function getEnvironmentSetUp($app)
+    protected function getEnvironmentSetUp($app): void
     {
         $app['config']->set('database.default', 'testing');
         $app['config']->set('database.connection.testing', [
@@ -32,7 +32,7 @@ class TestCase extends TestbenchTestCase
     protected function getPackageAliases($app): array
     {
         return [
-            'FirstPackage' => \ArielMejiaDev\LarapexCharts\Facades\LarapexChart::class
+            'LarapexChart' => \ArielMejiaDev\LarapexCharts\Facades\LarapexChart::class
         ];
     }
 

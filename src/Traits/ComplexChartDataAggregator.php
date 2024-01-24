@@ -6,14 +6,14 @@ trait ComplexChartDataAggregator
 {
     public function addData(string $name, array $data) :self
     {
-        $this->dataset = json_decode($this->dataset);
+        $dataset = json_decode($this->dataset);
 
-        $this->dataset[] = [
+        $dataset[] = [
             'name' => $name,
             'data' => $data
         ];
 
-        $this->dataset = json_encode($this->dataset);
+        $this->dataset = json_encode($dataset);
 
         return $this;
     }

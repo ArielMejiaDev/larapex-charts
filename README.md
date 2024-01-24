@@ -115,6 +115,8 @@ Hey 👋 thanks for considering making a donation, with these donations I can co
 - [ ] Add blade directive `@apexchartscdn`
 - [ ] Add blade directive `@script($chart)`
 - [ ] Add a chain options setter for charts
+- [ ] Update Github Actions to run tests
+- [ ] Update the package in general for more efficient & modern practices (spatie skeleton package)
 - [ ] Add ReactJS + Inertia Support
 - [ ] Add More complex charts
 - [ ] Add More complex boilerplate code using Laravel/Prompts

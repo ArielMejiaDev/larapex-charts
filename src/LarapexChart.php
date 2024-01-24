@@ -38,6 +38,7 @@ class LarapexChart
     protected string $toolbar;
     protected string $zoom;
     protected string $dataLabels;
+    protected string $theme = 'light';
     protected string $sparkline;
     private string $chartLetters = 'abcdefghijklmnopqrstuvwxyz';
 
@@ -61,6 +62,7 @@ class LarapexChart
         $this->sparkline = json_encode(['enabled' => false]);
         $this->fontFamily = config('larapex-charts.font_family');
         $this->foreColor = config('larapex-charts.font_color');
+        return $this;
     }
 
     public function pieChart() :PieChart
@@ -258,6 +260,11 @@ class LarapexChart
         return $this;
     }
 
+    public function setTheme(string $theme) :LarapexChart
+    {
+        $this->theme = $theme;
+    }
+  
     public function setSparkline(bool $enabled = true): LarapexChart
     {
         $this->sparkline = json_encode(['enabled' => $enabled]);
@@ -435,6 +442,9 @@ class LarapexChart
             'colors' => json_decode($this->colors()),
             'series' => json_decode($this->dataset()),
             'dataLabels' => json_decode($this->dataLabels()),
+            'theme' => [
+                'mode' => $this->theme
+            ],
             'title' => [
                 'text' => $this->title()
             ],
@@ -486,6 +496,9 @@ class LarapexChart
             ],
             'colors' => json_decode($this->colors()),
             'dataLabels' => json_decode($this->dataLabels()),
+            'theme' => [
+                'mode' => $this->theme
+            ],
             'title' => [
                 'text' => $this->title()
             ],

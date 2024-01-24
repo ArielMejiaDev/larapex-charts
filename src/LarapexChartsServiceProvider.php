@@ -22,6 +22,10 @@ class LarapexChartsServiceProvider extends ServiceProvider
         });
 
         $this->mergeConfigFrom($this->packageBasePath('config/larapex-charts.php'), 'larapex-charts');
+
+        $this->commands([
+            \ArielMejiaDev\LarapexCharts\Console\ChartMakeCommand::class,
+        ]);
     }
 
     /**

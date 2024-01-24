@@ -40,7 +40,7 @@ $chart = (new LarapexChart)->setTitle('Posts')
 Remember to import the Facade to your controller with 
 
 ```php
-use ArielMejiaDev\LarapexCharts\Facades\LarapexChart
+use ArielMejiaDev\LarapexCharts\Facades\LarapexChart;
 ```
 
 Or importing the LarapexChart class:
@@ -89,7 +89,7 @@ $chart = (new LarapexChart)->setType('area')
         ]);
 ```
 
-You can create a variety of charts including: Line, Area, Bar, Horizantal Bar, Heatmap, pie, donut and Radialbar.
+You can create a variety of charts including: Line, Area, Bar, Horizontal Bar, Heatmap, pie, donut and Radialbar.
 
 ## More examples
 

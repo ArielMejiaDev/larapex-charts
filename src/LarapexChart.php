@@ -17,28 +17,29 @@ class LarapexChart
     |
     */
 
-    public $id;
-    protected $title;
-    protected $subtitle;
-    protected $subtitlePosition;
-    protected $type = 'donut';
-    protected $labels;
-    protected $fontFamily;
-    protected $foreColor;
-    protected $dataset;
-    protected $height = 500;
-    protected $width;
-    protected $colors;
-    protected $horizontal;
-    protected $xAxis;
-    protected $grid;
-    protected $markers;
-    protected $stroke;
-    protected $toolbar;
-    protected $zoom;
-    protected $dataLabels;
-    protected $sparklines;
-    private $chartLetters = 'abcdefghijklmnopqrstuvwxyz';
+    public string $id;
+    protected string $title = '';
+    protected string $subtitle = '';
+    protected string $subtitlePosition = 'left';
+    protected string $type = 'donut';
+    protected array $labels = [];
+    protected string $fontFamily;
+    protected string $foreColor;
+    protected string $dataset = '';
+    protected int $height = 500;
+    protected int|string $width = '100%';
+    protected string $colors;
+    protected string $horizontal;
+    protected string $xAxis;
+    protected string $grid;
+    protected string $markers;
+    protected bool $stacked = false;
+    protected string $stroke = '';
+    protected string $toolbar;
+    protected string $zoom;
+    protected string $dataLabels;
+    protected string $sparkline;
+    private string $chartLetters = 'abcdefghijklmnopqrstuvwxyz';
 
     /*
     |--------------------------------------------------------------------------
@@ -57,10 +58,9 @@ class LarapexChart
         $this->toolbar = json_encode(['show' => false]);
         $this->zoom = json_encode(['enabled' => true]);
         $this->dataLabels = json_encode(['enabled' => false]);
-        $this->sparklines = json_encode(['enabled' => false]);
-        $this->fontFamily = json_encode(config('larapex-charts.font_family'));
+        $this->sparkline = json_encode(['enabled' => false]);
+        $this->fontFamily = config('larapex-charts.font_family');
         $this->foreColor = config('larapex-charts.font_color');
-        return $this;
     }
 
     public function pieChart() :PieChart
@@ -143,7 +143,7 @@ class LarapexChart
         return $this;
     }
 
-    public function setDataset($dataset): LarapexChart
+    public function setDataset(array $dataset): LarapexChart
     {
         $this->dataset = json_encode($dataset);
         return $this;
@@ -198,17 +198,13 @@ class LarapexChart
         return $this;
     }
 
-    public function setGrid($transparent = true, $color = '#e5e5e5', $opacity = 0.1) :LarapexChart
+    public function setGrid($color = '#e5e5e5', $opacity = 0.1) :LarapexChart
     {
-        if($transparent) {
-            $this->grid = json_encode(['show' => true]);
-            return $this;
-        }
-
         $this->grid = json_encode([
+            'show' => true,
             'row' => [
                 'colors' => [$color, 'transparent'],
-                'opacity' => $opacity ? $opacity : 0.5
+                'opacity' => $opacity,
             ],
         ]);
 
@@ -234,7 +230,7 @@ class LarapexChart
         return $this;
     }
 
-    public function setStroke(int $width, array $colors = []) :LarapexChart
+    public function setStroke(int $width, array $colors = [], string $curve = 'straight') :LarapexChart
     {
         if(empty($colors)) {
             $colors = config('larapex-charts.colors');
@@ -244,6 +240,7 @@ class LarapexChart
             'show'    =>  true,
             'width'   =>  $width,
             'colors'  =>  $colors,
+            'curve'   =>  $curve,
         ]);
         return $this;
     }
@@ -261,9 +258,15 @@ class LarapexChart
         return $this;
     }
 
-    public function setSparklines(bool $enabled = true): LarapexChart
+    public function setSparkline(bool $enabled = true): LarapexChart
     {
-        $this->sparklines = json_encode(['enabled' => $enabled]);
+        $this->sparkline = json_encode(['enabled' => $enabled]);
+        return $this;
+    }
+
+    public function setStacked(bool $stacked = true): LarapexChart
+    {
+        $this->stacked = $stacked;
         return $this;
     }
 
@@ -273,11 +276,7 @@ class LarapexChart
     |--------------------------------------------------------------------------
     */
 
-    /**
-     * @param array $array
-     * @return array|false|string
-     */
-    public function transformLabels(array $array)
+    public function transformLabels(array $array): bool|string
     {
         $stringArray = array_filter($array, function($string){
             return "{$string}";
@@ -285,18 +284,12 @@ class LarapexChart
         return json_encode(['"' . implode('","', $stringArray) . '"']);
     }
 
-    /**
-     * @return mixed
-     */
-    public function container()
+    public function container(): mixed
     {
         return View::make('larapex-charts::chart.container', ['id' => $this->id()]);
     }
 
-    /**
-     * @return mixed
-     */
-    public function script()
+    public function script(): mixed
     {
         return View::make('larapex-charts::chart.script', ['chart' => $this]);
     }
@@ -306,81 +299,51 @@ class LarapexChart
         return 'https://cdn.jsdelivr.net/npm/apexcharts';
     }
 
-    /**
-     * @return false|string
-     */
-    public function id()
+    public function id(): string
     {
         return $this->id;
     }
 
-    /**
-     * @return mixed
-     */
-    public function title()
+    public function title(): string
     {
         return $this->title;
     }
 
-    /**
-     * @return mixed
-     */
-    public function subtitle()
+    public function subtitle(): string
     {
         return $this->subtitle;
     }
 
-    /**
-     * @return mixed
-     */
-    public function subtitlePosition()
+    public function subtitlePosition(): string
     {
         return $this->subtitlePosition;
     }
 
-    /**
-     * @return string
-     */
-    public function type()
+    public function type(): string
     {
         return $this->type;
     }
 
-	/**
-	 * @return string
-	 */
-	public function fontFamily()
-	{
+	public function fontFamily(): string
+    {
 		return $this->fontFamily;
 	}
 
-    /**
-     * @return string
-     */
-    public function foreColor()
+    public function foreColor(): string
     {
         return $this->foreColor;
     }
 
-    /**
-     * @return mixed
-     */
-    public function labels()
+    public function labels(): array
     {
         return $this->labels;
     }
 
-    /**
-     * @return mixed
-     */
-    public function dataset()
+    public function dataset(): string
     {
         return $this->dataset;
     }
 
-    /**
-     * @return int
-     */
     public function height() :int
     {
         return $this->height;
@@ -388,96 +351,71 @@ class LarapexChart
 
     public function width() :string
     {
-        return $this->width ? $this->width : '100%';
+        return $this->width;
     }
 
-    /**
-     * @return false|string
-     */
-    public function colors()
+    public function colors(): bool|string
     {
         return $this->colors;
     }
 
-    /**
-     * @return false|string
-     */
-    public function horizontal()
+    public function horizontal(): bool|string
     {
         return $this->horizontal;
     }
 
-    /**
-     * @return mixed
-     */
-    public function xAxis()
+    public function xAxis(): string
     {
         return $this->xAxis;
     }
 
-    /**
-     * @return false|string
-     */
-    public function grid()
+    public function grid(): bool|string
     {
         return $this->grid;
     }
 
-    /**
-     * @return false|string
-     */
-    public function markers()
+    public function markers(): bool|string
     {
         return $this->markers;
     }
 
-    /**
-     * @return mixed
-     */
-    public function stroke()
+    public function stroke(): string
     {
         return $this->stroke;
     }
 
-    /**
-     * @return true|boolean
-     */
-    public function toolbar()
+    public function toolbar(): bool|string
     {
         return $this->toolbar;
     }
 
-    /**
-     * @return true|boolean
-     */
-    public function zoom()
+    public function zoom(): bool|string
     {
         return $this->zoom;
     }
 
-    /**
-     * @return true|boolean
-     */
-    public function dataLabels()
+    public function dataLabels(): bool|string
     {
         return $this->dataLabels;
     }
 
-    /**
-     * @return true|boolean
-     */
-    public function sparklines()
+    public function sparkline(): bool|string
     {
-        return $this->sparklines;
+        return $this->sparkline;
+    }
+
+    public function stacked(): bool
+    {
+        return $this->stacked;
     }
 
     /*
     |--------------------------------------------------------------------------
-    | JSON Helper
+    | JSON Options Builder
     |--------------------------------------------------------------------------
     */
 
-    public function toJson()
+    public function toJson(): \Illuminate\Http\JsonResponse
     {
         $options = [
             'chart' => [
@@ -488,7 +426,8 @@ class LarapexChart
                 'zoom' => json_decode($this->zoom()),
                 'fontFamily' => json_decode($this->fontFamily()),
                 'foreColor' => $this->foreColor(),
-                'sparklines' => $this->sparklines(),
+                'sparkline' => $this->sparkline(),
+                'stacked' => $this->stacked(),
             ],
             'plotOptions' => [
                 'bar' => json_decode($this->horizontal()),
@@ -524,6 +463,12 @@ class LarapexChart
         ]);
     }
 
+    /*
+    |--------------------------------------------------------------------------
+    | Vue Options Builder
+    |--------------------------------------------------------------------------
+    */
+
     public function toVue() :array
     {
         $options = [
@@ -533,7 +478,8 @@ class LarapexChart
                 'zoom' => json_decode($this->zoom()),
                 'fontFamily' => json_decode($this->fontFamily()),
                 'foreColor' => $this->foreColor(),
-                'sparkline' => json_decode($this->sparklines()),
+                'sparkline' => json_decode($this->sparkline()),
+                'stacked' => $this->stacked(),
             ],
             'plotOptions' => [
                 'bar' => json_decode($this->horizontal()),
@@ -570,5 +516,4 @@ class LarapexChart
             'series' => json_decode($this->dataset()),
         ];
     }
-
 }

@@ -111,6 +111,23 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/stopwatch" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/string" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/ramsey/collection" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-php81" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/serializable-closure" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/dflydev/dot-access-data" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/pimple/pimple" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/nette/schema" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/league/config" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/nette/utils" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/league/flysystem-local" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/filp/whoops" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/nunomaduro/termwind" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/nunomaduro/collision" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/guzzlehttp/uri-template" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/fruitcake/php-cors" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-php83" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/mailer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-uuid" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/uid" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

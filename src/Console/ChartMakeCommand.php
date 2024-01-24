@@ -1,13 +1,16 @@
 <?php
 
-namespace App\Console\Commands;
+namespace ArielMejiaDev\LarapexCharts\Console;
 
+use ArielMejiaDev\LarapexCharts\Traits\WithModelStub;
 use Illuminate\Console\GeneratorCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
 class ChartMakeCommand extends GeneratorCommand
 {
+    use WithModelStub;
+
     protected $chartTypes = [
         'Pie Chart' => 'PieChart',
         'Donut Chart' => 'DonutChart',
@@ -76,7 +79,9 @@ class ChartMakeCommand extends GeneratorCommand
             $directory = 'Json';
         }
 
-        return base_path("stubs/charts/{$directory}/{$this->selectedChart}.stub");
+        $stub = "{$directory}/{$this->selectedChart}.stub";
+
+        return $this->resolveStubPath($stub);
     }
 
     /**

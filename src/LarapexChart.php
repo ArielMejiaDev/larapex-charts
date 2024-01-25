@@ -263,6 +263,7 @@ class LarapexChart
     public function setTheme(string $theme) :LarapexChart
     {
         $this->theme = $theme;
+	return $this;
     }
   
     public function setSparkline(bool $enabled = true): LarapexChart

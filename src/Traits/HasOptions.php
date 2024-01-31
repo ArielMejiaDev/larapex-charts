@@ -1,28 +1,27 @@
 <?php
 namespace ArielMejiaDev\LarapexCharts\Traits;
 trait HasOptions{
-    protected $options;
+    protected array $options;
         /**
      * Get the value of options
      */ 
-    public function getOptions()
+    public function getOptions(): array
     {
         return $this->options ? array_merge_recursive($this->getDefaultOption() ,$this->options) : $this->getDefaultOption();
     }
 
     /**
      * Set the value of options
-     *
-     * @return  self
      */ 
-    public function setOptions($options)
+    public function setOptions(array $options): self
     {
         $this->options = $options;
 
         return $this;
     }
 
-    private function getDefaultOption(){
+    private function getDefaultOption(): array
+    {
         return [
             'chart' => [
                 'type' => $this->type(),

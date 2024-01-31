@@ -50,7 +50,7 @@ class LarapexChart
 
     public function __construct()
     {
-        $this->id = substr(str_shuffle(str_repeat($x = $this->chartLetters, ceil(25 / strlen($x)))), 1, 25);
+        $this->id = substr(str_shuffle(str_repeat($x = $this->chartLetters, (int) ceil(25 / strlen($x)))), 1, 25);
         $this->horizontal = json_encode(['horizontal' => false]);
         $this->colors = json_encode(config('larapex-charts.colors'));
         $this->setXAxis([]);
@@ -62,7 +62,6 @@ class LarapexChart
         $this->sparkline = json_encode(['enabled' => false]);
         $this->fontFamily = config('larapex-charts.font_family');
         $this->foreColor = config('larapex-charts.font_color');
-        return $this;
     }
 
     public function pieChart() :PieChart
@@ -124,22 +123,21 @@ class LarapexChart
     /**
      *
      * @deprecated deprecated since version 2.0
-     * @param null $type
      * @return $this
      */
-    public function setType($type = null) :LarapexChart
+    public function setType(string $type = null) :LarapexChart
     {
         $this->type = $type;
         return $this;
     }
 
-	public function setFontFamily($fontFamily) :LarapexChart
+	public function setFontFamily(string $fontFamily) :LarapexChart
 	{
 		$this->fontFamily = $fontFamily;
 		return $this;
 	}
 
-    public function setFontColor($fontColor) :LarapexChart
+    public function setFontColor(string $fontColor) :LarapexChart
     {
         $this->foreColor = $fontColor;
         return $this;
@@ -200,7 +198,7 @@ class LarapexChart
         return $this;
     }
 
-    public function setGrid($color = '#e5e5e5', $opacity = 0.1) :LarapexChart
+    public function setGrid(string $color = '#e5e5e5', float $opacity = 0.1) :LarapexChart
     {
         $this->grid = json_encode([
             'show' => true,
@@ -213,7 +211,7 @@ class LarapexChart
         return $this;
     }
 
-    public function setMarkers($colors = [], $width = 4, $hoverSize = 7) :LarapexChart
+    public function setMarkers(array $colors = [], int $width = 4, int $hoverSize = 7) :LarapexChart
     {
         if(empty($colors)) {
             $colors = config('larapex-charts.colors');
@@ -286,6 +284,7 @@ class LarapexChart
 
     public function transformLabels(array $array): bool|string
     {
+        /* @phpstan-ignore-next-line */
         $stringArray = array_filter($array, function($string){
             return "{$string}";
         });

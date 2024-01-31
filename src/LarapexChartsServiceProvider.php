@@ -13,9 +13,8 @@ class LarapexChartsServiceProvider extends ServiceProvider
      * Before laravel app get all providers and methods of laravel running 
      * The package must register the service to access to package class service container and Facade
      *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->app->bind('larapex-chart', function(){
             return new LarapexChart;

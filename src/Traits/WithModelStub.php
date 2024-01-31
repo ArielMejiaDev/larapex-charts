@@ -4,7 +4,7 @@ namespace ArielMejiaDev\LarapexCharts\Traits;
 
 trait WithModelStub
 {
-    protected function resolveStubPath($stub)
+    protected function resolveStubPath(string $stub): string
     {
         $customPath = base_path("stubs/charts/{$stub}");
 

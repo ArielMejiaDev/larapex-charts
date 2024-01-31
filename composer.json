@@ -25,7 +25,8 @@
         "orchestra/testbench": "^7.0|^8.0",
         "phpunit/phpunit": "^9.0|^10.0",
         "nunomaduro/collision": "^7.5",
-        "larastan/larastan": "^2.8"
+        "larastan/larastan": "^2.8",
+        "laravel/pint": "^1.13"
     },
     "autoload": {
         "psr-4": {
@@ -40,9 +41,9 @@
     "scripts": {
         "test": "vendor/bin/phpunit",
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
-        "phpstan": [
-            "./vendor/bin/phpstan analyse"
-        ]
+        "phpstan": "./vendor/bin/phpstan analyse",
+        "pint-show": "./vendor/bin/pint --config pint.json  -v",
+        "pint-fix": "./vendor/bin/pint --config pint.json"
     },
     "extra": {
         "laravel": {

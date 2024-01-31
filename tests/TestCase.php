@@ -1,7 +1,9 @@
-<?php namespace ArielMejiaDev\LarapexCharts\Tests;
+<?php
 
-use Orchestra\Testbench\TestCase as TestbenchTestCase;
+namespace ArielMejiaDev\LarapexCharts\Tests;
+
 use ArielMejiaDev\LarapexCharts\LarapexChartsServiceProvider;
+use Orchestra\Testbench\TestCase as TestbenchTestCase;
 
 class TestCase extends TestbenchTestCase
 {
@@ -9,7 +11,6 @@ class TestCase extends TestbenchTestCase
      * Sets the env data to interact as env file values
      *
      * @param [type] $app
-     * @return void
      */
     protected function getEnvironmentSetUp($app): void
     {
@@ -35,5 +36,4 @@ class TestCase extends TestbenchTestCase
             'LarapexChart' => \ArielMejiaDev\LarapexCharts\Facades\LarapexChart::class
         ];
     }
-
 }

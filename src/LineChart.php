@@ -2,7 +2,6 @@
 
 namespace ArielMejiaDev\LarapexCharts;
 
-
 use ArielMejiaDev\LarapexCharts\Contracts\MustAddComplexData;
 use ArielMejiaDev\LarapexCharts\Traits\ComplexChartDataAggregator;
 
@@ -16,7 +15,7 @@ class LineChart extends LarapexChart implements MustAddComplexData
         $this->type = 'line';
     }
 
-    public function addLine(string $name, array $data) :LineChart
+    public function addLine(string $name, array $data): LineChart
     {
         return $this->addData($name, $data);
     }

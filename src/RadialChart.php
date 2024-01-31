@@ -2,7 +2,6 @@
 
 namespace ArielMejiaDev\LarapexCharts;
 
-
 use ArielMejiaDev\LarapexCharts\Contracts\MustAddSimpleData;
 use ArielMejiaDev\LarapexCharts\Traits\SimpleChartDataAggregator;
 
@@ -16,7 +15,7 @@ class RadialChart extends LarapexChart implements MustAddSimpleData
         $this->type = 'radialBar';
     }
 
-    public function addRings(array $data) :RadialChart
+    public function addRings(array $data): RadialChart
     {
         $this->addData($data);
         return $this;

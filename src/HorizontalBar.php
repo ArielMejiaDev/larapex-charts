@@ -1,8 +1,6 @@
 <?php
 
-
 namespace ArielMejiaDev\LarapexCharts;
-
 
 use ArielMejiaDev\LarapexCharts\Contracts\MustAddComplexData;
 use ArielMejiaDev\LarapexCharts\Traits\ComplexChartDataAggregator;
@@ -18,7 +16,7 @@ class HorizontalBar extends LarapexChart implements MustAddComplexData
         $this->horizontal = json_encode(['horizontal' => true]);
     }
 
-    public function addBar(string $name, array $data) :HorizontalBar
+    public function addBar(string $name, array $data): HorizontalBar
     {
         return $this->addData($name, $data);
     }

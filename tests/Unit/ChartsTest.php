@@ -1,8 +1,10 @@
-<?php namespace ArielMejiaDev\LarapexCharts\Tests\Unit;
+<?php
 
-use Illuminate\Support\Facades\Artisan;
+namespace ArielMejiaDev\LarapexCharts\Tests\Unit;
+
 use ArielMejiaDev\LarapexCharts\LarapexChart;
 use ArielMejiaDev\LarapexCharts\Tests\TestCase;
+use Illuminate\Support\Facades\Artisan;
 
 class ChartsTest extends TestCase
 {
@@ -63,6 +65,6 @@ class ChartsTest extends TestCase
     /** @test */
     public function it_tests_larapex_chart_cdn_returns_a_correct_url(): void
     {
-        $this->assertEquals('https://cdn.jsdelivr.net/npm/apexcharts' , (new LarapexChart)->cdn());
+        $this->assertEquals('https://cdn.jsdelivr.net/npm/apexcharts', (new LarapexChart)->cdn());
     }
 }

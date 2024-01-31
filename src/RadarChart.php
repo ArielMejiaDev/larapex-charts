@@ -15,7 +15,7 @@ class RadarChart extends LarapexChart implements MustAddComplexData
         $this->type = 'radar';
     }
 
-    public function addSerie(string $name, array $data) :RadarChart
+    public function addSerie(string $name, array $data): RadarChart
     {
         return $this->addData($name, $data);
     }

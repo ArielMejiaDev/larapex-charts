@@ -1,4 +1,6 @@
-<?php namespace ArielMejiaDev\LarapexCharts;
+<?php
+
+namespace ArielMejiaDev\LarapexCharts;
 
 use ArielMejiaDev\LarapexCharts\Traits\HasOptions;
 use Illuminate\Support\Facades\View;
@@ -11,9 +13,9 @@ class LarapexChart
     | Chart
     |--------------------------------------------------------------------------
     |
-    | This class build the chart by passing setters to the object, it will 
-    | use the method container and scripts to generate a JSON  
-    | in blade views, it works also with Vue JS components  
+    | This class build the chart by passing setters to the object, it will
+    | use the method container and scripts to generate a JSON
+    | in blade views, it works also with Vue JS components
     |
     */
 
@@ -64,54 +66,54 @@ class LarapexChart
         $this->foreColor = config('larapex-charts.font_color');
     }
 
-    public function pieChart() :PieChart
+    public function pieChart(): PieChart
     {
-        return new PieChart();
+        return new PieChart;
     }
 
-    public function donutChart() :DonutChart
+    public function donutChart(): DonutChart
     {
-        return new DonutChart();
+        return new DonutChart;
     }
 
-    public function radialChart() :RadialChart
+    public function radialChart(): RadialChart
     {
-        return new RadialChart();
+        return new RadialChart;
     }
 
-    public function polarAreaChart() :PolarAreaChart
+    public function polarAreaChart(): PolarAreaChart
     {
-        return new PolarAreaChart();
+        return new PolarAreaChart;
     }
 
-    public function lineChart() :LineChart
+    public function lineChart(): LineChart
     {
-        return new LineChart();
+        return new LineChart;
     }
 
-    public function areaChart() :AreaChart
+    public function areaChart(): AreaChart
     {
-        return new AreaChart();
+        return new AreaChart;
     }
 
-    public function barChart() :BarChart
+    public function barChart(): BarChart
     {
-        return new BarChart();
+        return new BarChart;
     }
 
-    public function horizontalBarChart() :HorizontalBar
+    public function horizontalBarChart(): HorizontalBar
     {
-        return new HorizontalBar();
+        return new HorizontalBar;
     }
 
-    public function heatMapChart() :HeatMapChart
+    public function heatMapChart(): HeatMapChart
     {
-        return new HeatMapChart();
+        return new HeatMapChart;
     }
 
-    public function radarChart() :RadarChart
+    public function radarChart(): RadarChart
     {
-        return new RadarChart();
+        return new RadarChart;
     }
 
     /*
@@ -121,23 +123,23 @@ class LarapexChart
     */
 
     /**
-     *
      * @deprecated deprecated since version 2.0
+     *
      * @return $this
      */
-    public function setType(string $type = null) :self
+    public function setType(?string $type = null): self
     {
         $this->type = $type;
         return $this;
     }
 
-	public function setFontFamily(string $fontFamily) :self
-	{
-		$this->fontFamily = $fontFamily;
-		return $this;
-	}
+    public function setFontFamily(string $fontFamily): self
+    {
+        $this->fontFamily = $fontFamily;
+        return $this;
+    }
 
-    public function setFontColor(string $fontColor) :self
+    public function setFontColor(string $fontColor): self
     {
         $this->foreColor = $fontColor;
         return $this;
@@ -149,56 +151,56 @@ class LarapexChart
         return $this;
     }
 
-    public function setHeight(int $height) :self
+    public function setHeight(int $height): self
     {
         $this->height = $height;
         return $this;
     }
 
-    public function setWidth(int $width) :self
+    public function setWidth(int $width): self
     {
         $this->width = $width;
         return $this;
     }
 
-    public function setColors(array $colors) :self
+    public function setColors(array $colors): self
     {
         $this->colors = json_encode($colors);
         return $this;
     }
 
-    public function setHorizontal(bool $horizontal) :self
+    public function setHorizontal(bool $horizontal): self
     {
         $this->horizontal = json_encode(['horizontal' => $horizontal]);
         return $this;
     }
 
-    public function setTitle(string $title) :self
+    public function setTitle(string $title): self
     {
         $this->title = $title;
         return $this;
     }
 
-    public function setSubtitle(string $subtitle, string $position = 'left') :self
+    public function setSubtitle(string $subtitle, string $position = 'left'): self
     {
         $this->subtitle = $subtitle;
         $this->subtitlePosition = $position;
         return $this;
     }
 
-    public function setLabels(array $labels) :self
+    public function setLabels(array $labels): self
     {
         $this->labels = $labels;
         return $this;
     }
 
-    public function setXAxis(array $categories) :self
+    public function setXAxis(array $categories): self
     {
         $this->xAxis = json_encode($categories);
         return $this;
     }
 
-    public function setGrid(string $color = '#e5e5e5', float $opacity = 0.1) :self
+    public function setGrid(string $color = '#e5e5e5', float $opacity = 0.1): self
     {
         $this->grid = json_encode([
             'show' => true,
@@ -211,16 +213,16 @@ class LarapexChart
         return $this;
     }
 
-    public function setMarkers(array $colors = [], int $width = 4, int $hoverSize = 7) :self
+    public function setMarkers(array $colors = [], int $width = 4, int $hoverSize = 7): self
     {
-        if(empty($colors)) {
+        if (empty($colors)) {
             $colors = config('larapex-charts.colors');
         }
 
         $this->markers = json_encode([
             'size' => $width,
             'colors' => $colors,
-            'strokeColors' => "#fff",
+            'strokeColors' => '#fff',
             'strokeWidth' => $width / 2,
             'hover' => [
                 'size' => $hoverSize,
@@ -230,9 +232,9 @@ class LarapexChart
         return $this;
     }
 
-    public function setStroke(int $width, array $colors = [], string $curve = 'straight') :self
+    public function setStroke(int $width, array $colors = [], string $curve = 'straight'): self
     {
-        if(empty($colors)) {
+        if (empty($colors)) {
             $colors = config('larapex-charts.colors');
         }
 
@@ -245,25 +247,25 @@ class LarapexChart
         return $this;
     }
 
-    public function setToolbar(bool $show, bool $zoom = true) :self
+    public function setToolbar(bool $show, bool $zoom = true): self
     {
         $this->toolbar = json_encode(['show' => $show]);
         $this->zoom = json_encode(['enabled' => $zoom ? $zoom : false]);
         return $this;
     }
 
-    public function setDataLabels(bool $enabled = true) :self
+    public function setDataLabels(bool $enabled = true): self
     {
         $this->dataLabels = json_encode(['enabled' => $enabled]);
         return $this;
     }
 
-    public function setTheme(string $theme) :self
+    public function setTheme(string $theme): self
     {
         $this->theme = $theme;
-	return $this;
+        return $this;
     }
-  
+
     public function setSparkline(bool $enabled = true): self
     {
         $this->sparkline = json_encode(['enabled' => $enabled]);
@@ -285,7 +287,7 @@ class LarapexChart
     public function transformLabels(array $array): bool|string
     {
         /* @phpstan-ignore-next-line */
-        $stringArray = array_filter($array, function($string){
+        $stringArray = array_filter($array, function ($string) {
             return "{$string}";
         });
         return json_encode(['"' . implode('","', $stringArray) . '"']);
@@ -301,7 +303,7 @@ class LarapexChart
         return View::make('larapex-charts::chart.script', ['chart' => $this]);
     }
 
-    public static function cdn() :string
+    public static function cdn(): string
     {
         return 'https://cdn.jsdelivr.net/npm/apexcharts';
     }
@@ -331,10 +333,10 @@ class LarapexChart
         return $this->type;
     }
 
-	public function fontFamily(): string
+    public function fontFamily(): string
     {
-		return $this->fontFamily;
-	}
+        return $this->fontFamily;
+    }
 
     public function foreColor(): string
     {
@@ -351,12 +353,12 @@ class LarapexChart
         return $this->dataset;
     }
 
-    public function height() :int
+    public function height(): int
     {
         return $this->height;
     }
 
-    public function width() :string
+    public function width(): string
     {
         return $this->width;
     }
@@ -459,11 +461,11 @@ class LarapexChart
             'markers' => json_decode($this->markers()),
         ];
 
-        if($this->labels()) {
+        if ($this->labels()) {
             $options['labels'] = $this->labels();
         }
 
-        if($this->stroke()) {
+        if ($this->stroke()) {
             $options['stroke'] = json_decode($this->stroke());
         }
 
@@ -479,7 +481,7 @@ class LarapexChart
     |--------------------------------------------------------------------------
     */
 
-    public function toVue() :array
+    public function toVue(): array
     {
         $options = [
             'chart' => [
@@ -513,11 +515,11 @@ class LarapexChart
             'markers' => json_decode($this->markers()),
         ];
 
-        if($this->labels()) {
+        if ($this->labels()) {
             $options['labels'] = $this->labels();
         }
 
-        if($this->stroke()) {
+        if ($this->stroke()) {
             $options['stroke'] = json_decode($this->stroke());
         }
 

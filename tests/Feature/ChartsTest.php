@@ -1,4 +1,6 @@
-<?php namespace ArielMejiaDev\LarapexCharts\Tests\Feature;
+<?php
+
+namespace ArielMejiaDev\LarapexCharts\Tests\Feature;
 
 use ArielMejiaDev\LarapexCharts\LarapexChart;
 use ArielMejiaDev\LarapexCharts\Tests\TestCase;
@@ -234,7 +236,7 @@ class ChartsTest extends TestCase
         $this->assertEquals($chart, $chart->script()['chart']);
         $this->assertEquals('heatmap', $chart->type());
     }
-    
+
     /** @test */
     public function it_tests_larapex_charts_can_render_radar_chart(): void
     {

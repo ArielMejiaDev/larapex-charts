@@ -105,7 +105,7 @@ class ChartMakeCommand extends GeneratorCommand
      */
     protected function getDefaultNamespace($rootNamespace): string
     {
-        return $rootNamespace.'\Charts';
+        return $rootNamespace . '\Charts';
     }
 
     /**

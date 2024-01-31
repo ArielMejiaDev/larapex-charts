@@ -24,7 +24,8 @@
     "require-dev": {
         "orchestra/testbench": "^7.0|^8.0",
         "phpunit/phpunit": "^9.0|^10.0",
-        "nunomaduro/collision": "^7.5"
+        "nunomaduro/collision": "^7.5",
+        "larastan/larastan": "^2.8"
     },
     "autoload": {
         "psr-4": {
@@ -38,7 +39,10 @@
     },
     "scripts": {
         "test": "vendor/bin/phpunit",
-        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
+        "phpstan": [
+            "./vendor/bin/phpstan analyse"
+        ]
     },
     "extra": {
         "laravel": {

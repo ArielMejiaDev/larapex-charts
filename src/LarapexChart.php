@@ -125,80 +125,80 @@ class LarapexChart
      * @deprecated deprecated since version 2.0
      * @return $this
      */
-    public function setType(string $type = null) :LarapexChart
+    public function setType(string $type = null) :self
     {
         $this->type = $type;
         return $this;
     }
 
-	public function setFontFamily(string $fontFamily) :LarapexChart
+	public function setFontFamily(string $fontFamily) :self
 	{
 		$this->fontFamily = $fontFamily;
 		return $this;
 	}
 
-    public function setFontColor(string $fontColor) :LarapexChart
+    public function setFontColor(string $fontColor) :self
     {
         $this->foreColor = $fontColor;
         return $this;
     }
 
-    public function setDataset(array $dataset): LarapexChart
+    public function setDataset(array $dataset): self
     {
         $this->dataset = json_encode($dataset);
         return $this;
     }
 
-    public function setHeight(int $height) :LarapexChart
+    public function setHeight(int $height) :self
     {
         $this->height = $height;
         return $this;
     }
 
-    public function setWidth(int $width) :LarapexChart
+    public function setWidth(int $width) :self
     {
         $this->width = $width;
         return $this;
     }
 
-    public function setColors(array $colors) :LarapexChart
+    public function setColors(array $colors) :self
     {
         $this->colors = json_encode($colors);
         return $this;
     }
 
-    public function setHorizontal(bool $horizontal) :LarapexChart
+    public function setHorizontal(bool $horizontal) :self
     {
         $this->horizontal = json_encode(['horizontal' => $horizontal]);
         return $this;
     }
 
-    public function setTitle(string $title) :LarapexChart
+    public function setTitle(string $title) :self
     {
         $this->title = $title;
         return $this;
     }
 
-    public function setSubtitle(string $subtitle, string $position = 'left') :LarapexChart
+    public function setSubtitle(string $subtitle, string $position = 'left') :self
     {
         $this->subtitle = $subtitle;
         $this->subtitlePosition = $position;
         return $this;
     }
 
-    public function setLabels(array $labels) :LarapexChart
+    public function setLabels(array $labels) :self
     {
         $this->labels = $labels;
         return $this;
     }
 
-    public function setXAxis(array $categories) :LarapexChart
+    public function setXAxis(array $categories) :self
     {
         $this->xAxis = json_encode($categories);
         return $this;
     }
 
-    public function setGrid(string $color = '#e5e5e5', float $opacity = 0.1) :LarapexChart
+    public function setGrid(string $color = '#e5e5e5', float $opacity = 0.1) :self
     {
         $this->grid = json_encode([
             'show' => true,
@@ -211,7 +211,7 @@ class LarapexChart
         return $this;
     }
 
-    public function setMarkers(array $colors = [], int $width = 4, int $hoverSize = 7) :LarapexChart
+    public function setMarkers(array $colors = [], int $width = 4, int $hoverSize = 7) :self
     {
         if(empty($colors)) {
             $colors = config('larapex-charts.colors');
@@ -230,7 +230,7 @@ class LarapexChart
         return $this;
     }
 
-    public function setStroke(int $width, array $colors = [], string $curve = 'straight') :LarapexChart
+    public function setStroke(int $width, array $colors = [], string $curve = 'straight') :self
     {
         if(empty($colors)) {
             $colors = config('larapex-charts.colors');
@@ -245,32 +245,32 @@ class LarapexChart
         return $this;
     }
 
-    public function setToolbar(bool $show, bool $zoom = true) :LarapexChart
+    public function setToolbar(bool $show, bool $zoom = true) :self
     {
         $this->toolbar = json_encode(['show' => $show]);
         $this->zoom = json_encode(['enabled' => $zoom ? $zoom : false]);
         return $this;
     }
 
-    public function setDataLabels(bool $enabled = true) :LarapexChart
+    public function setDataLabels(bool $enabled = true) :self
     {
         $this->dataLabels = json_encode(['enabled' => $enabled]);
         return $this;
     }
 
-    public function setTheme(string $theme) :LarapexChart
+    public function setTheme(string $theme) :self
     {
         $this->theme = $theme;
 	return $this;
     }
   
-    public function setSparkline(bool $enabled = true): LarapexChart
+    public function setSparkline(bool $enabled = true): self
     {
         $this->sparkline = json_encode(['enabled' => $enabled]);
         return $this;
     }
 
-    public function setStacked(bool $stacked = true): LarapexChart
+    public function setStacked(bool $stacked = true): self
     {
         $this->stacked = $stacked;
         return $this;

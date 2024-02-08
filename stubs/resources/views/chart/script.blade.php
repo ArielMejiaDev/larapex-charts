@@ -38,6 +38,9 @@
         @if($chart->stroke())
             stroke: {!! $chart->stroke() !!},
         @endif
+        legend: {
+            show: {!! $chart->showLegend() !!}
+        }
     }
 
     var chart = new ApexCharts(document.querySelector("#{!! $chart->id() !!}"), options);

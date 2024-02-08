@@ -34,6 +34,7 @@ class LarapexChart
     protected string $grid;
     protected string $markers;
     protected bool $stacked = false;
+    protected bool $showLegend = true;
     protected string $stroke = '';
     protected string $toolbar;
     protected string $zoom;
@@ -278,6 +279,12 @@ class LarapexChart
         return $this;
     }
 
+    public function setShowLegend(bool $showLegend = true): self
+    {
+        $this->showLegend = $showLegend;
+        return $this;
+    }
+
     /*
     |--------------------------------------------------------------------------
     | Getters
@@ -417,6 +424,11 @@ class LarapexChart
         return $this->stacked;
     }
 
+    public function showLegend(): string
+    {
+        return $this->showLegend ? 'true' : 'false';
+    }
+
     /*
     |--------------------------------------------------------------------------
     | JSON Options Builder
@@ -458,6 +470,9 @@ class LarapexChart
             ],
             'grid' => json_decode($this->grid()),
             'markers' => json_decode($this->markers()),
+            'legend' => [
+                'show' => $this->showLegend()
+            ],
         ];
 
         if($this->labels()) {
@@ -512,6 +527,9 @@ class LarapexChart
             ],
             'grid' => json_decode($this->grid()),
             'markers' => json_decode($this->markers()),
+            'legend' => [
+                'show' => $this->showLegend()
+            ]
         ];
 
         if($this->labels()) {

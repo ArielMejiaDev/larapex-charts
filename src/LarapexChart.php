@@ -41,6 +41,10 @@ class LarapexChart
     protected string $dataLabels;
     protected string $theme = 'light';
     protected string $sparkline;
+    protected bool $yAxisShow = false;
+    protected ?int $yAxisMin = null;
+    protected ?int $yAxisMax = null;
+    protected ?int $yAxisTickAmount = null;
     private string $chartLetters = 'abcdefghijklmnopqrstuvwxyz';
 
     /*
@@ -198,6 +202,16 @@ class LarapexChart
     public function setXAxis(array $categories) :LarapexChart
     {
         $this->xAxis = json_encode($categories);
+        return $this;
+    }
+
+    public function setYAxis(int $min, int $max, ?int $tickAmount = null, bool $show = true) :self
+    {
+        $this->yAxisMin = $min;
+        $this->yAxisMax = $max;
+        $this->yAxisTickAmount = $tickAmount ?? $max;
+        $this->yAxisShow = $show;
+
         return $this;
     }
 
@@ -429,6 +443,24 @@ class LarapexChart
         return $this->showLegend ? 'true' : 'false';
     }
 
+    public function yAxis(): ?array
+    {
+        if (
+            $this->yAxisMin === null ||
+            $this->yAxisMax === null ||
+            $this->yAxisTickAmount === null
+        ) {
+            return null;
+        }
+
+        return [
+            'show' => $this->yAxisShow ? 'true' : 'false',
+            'min' => $this->yAxisMin,
+            'max' => $this->yAxisMax,
+            'tickAmount' => $this->yAxisTickAmount
+        ];
+    }
+
     /*
     |--------------------------------------------------------------------------
     | JSON Options Builder
@@ -481,6 +513,10 @@ class LarapexChart
 
         if($this->stroke()) {
             $options['stroke'] = json_decode($this->stroke());
+        }
+
+        if($this->yAxis() !== null) {
+            $options['yaxis'] = $this->yAxis();
         }
 
         return response()->json([
@@ -538,6 +574,10 @@ class LarapexChart
 
         if($this->stroke()) {
             $options['stroke'] = json_decode($this->stroke());
+        }
+
+        if($this->yAxis() !== null) {
+            $options['yaxis'] = $this->yAxis();
         }
 
         return [

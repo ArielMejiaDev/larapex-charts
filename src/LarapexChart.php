@@ -35,6 +35,7 @@ class LarapexChart
     protected string $markers;
     protected bool $stacked = false;
     protected bool $showLegend = true;
+    protected bool $showXAxisLabels = true;
     protected string $stroke = '';
     protected string $toolbar;
     protected string $zoom;
@@ -285,6 +286,12 @@ class LarapexChart
         return $this;
     }
 
+    public function setShowXAxisLabels(bool $showXAxisLabels = true): self
+    {
+        $this->showXAxisLabels = $showXAxisLabels;
+        return $this;
+    }
+
     /*
     |--------------------------------------------------------------------------
     | Getters
@@ -429,6 +436,11 @@ class LarapexChart
         return $this->showLegend ? 'true' : 'false';
     }
 
+    public function showXAxisLabels(): bool
+    {
+        return $this->showXAxisLabels;
+    }
+
     /*
     |--------------------------------------------------------------------------
     | JSON Options Builder
@@ -467,6 +479,9 @@ class LarapexChart
             ],
             'xaxis' => [
                 'categories' => json_decode($this->xAxis()),
+                'labels' => [
+                    'show' => $this->showXAxisLabels(),
+                ]
             ],
             'grid' => json_decode($this->grid()),
             'markers' => json_decode($this->markers()),
@@ -524,6 +539,9 @@ class LarapexChart
             ],
             'xaxis' => [
                 'categories' => json_decode($this->xAxis()),
+                'labels' => [
+                    'show' => $this->showXAxisLabels(),
+                ]
             ],
             'grid' => json_decode($this->grid()),
             'markers' => json_decode($this->markers()),

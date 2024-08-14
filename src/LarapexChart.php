@@ -31,6 +31,7 @@ class LarapexChart
     protected string $colors;
     protected string $horizontal;
     protected string $xAxis;
+    protected string $yAxis = '';
     protected string $grid;
     protected string $markers;
     protected bool $stacked = false;
@@ -214,6 +215,15 @@ class LarapexChart
         return $this;
     }
 
+    public function setYAxis($min, $max) :LarapexChart
+    {
+        $this->yAxis = json_encode([
+            'min' => $min,
+            'max' => $max
+        ]);
+        return $this;
+    }
+
     public function setMarkers($colors = [], $width = 4, $hoverSize = 7) :LarapexChart
     {
         if(empty($colors)) {
@@ -383,6 +393,10 @@ class LarapexChart
     {
         return $this->xAxis;
     }
+    public function yAxis(): string
+    {
+        return $this->yAxis;
+    }
 
     public function grid(): bool|string
     {
@@ -482,6 +496,9 @@ class LarapexChart
         if($this->stroke()) {
             $options['stroke'] = json_decode($this->stroke());
         }
+        if($this->yAxis()) {
+            $options['yaxis'] = json_decode($this->yAxis());
+        }
 
         return response()->json([
             'id' => $this->id(),
@@ -540,6 +557,10 @@ class LarapexChart
             $options['stroke'] = json_decode($this->stroke());
         }
 
+        if($this->yAxis()) {
+            $options['yaxis'] = json_decode($this->yAxis());
+        }
+
         return [
             'height' => $this->height(),
             'width' => $this->width(),
@@ -549,3 +570,4 @@ class LarapexChart
         ];
     }
 }
+

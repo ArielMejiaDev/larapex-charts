@@ -1,6 +1,6 @@
 <?php
 
-namespace ArielMejiaDev\LarapexCharts\Contracts;
+namespace Dusanbre\LarapexCharts\Contracts;
 
 
 interface MustAddSimpleData

@@ -28,12 +28,12 @@
     },
     "autoload": {
         "psr-4": {
-            "ArielMejiaDev\\LarapexCharts\\": "src"
+            "Dusanbre\\LarapexCharts\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "ArielMejiaDev\\LarapexCharts\\Tests\\": "tests"
+            "Dusanbre\\LarapexCharts\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -43,10 +43,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "ArielMejiaDev\\LarapexCharts\\LarapexChartsServiceProvider"
+                "Dusanbre\\LarapexCharts\\LarapexChartsServiceProvider"
             ],
             "aliases": {
-                "LarapexChart": "ArielMejiaDev\\LarapexCharts\\Facades\\LarapexChart"
+                "LarapexChart": "Dusanbre\\LarapexCharts\\Facades\\LarapexChart"
             }
         }
     }

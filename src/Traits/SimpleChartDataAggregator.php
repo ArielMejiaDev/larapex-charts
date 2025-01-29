@@ -1,10 +1,10 @@
 <?php
 
 
-namespace ArielMejiaDev\LarapexCharts\Traits;
+namespace Dusanbre\LarapexCharts\Traits;
 
 
-use ArielMejiaDev\LarapexCharts\LarapexChart;
+use Dusanbre\LarapexCharts\LarapexChart;
 
 trait SimpleChartDataAggregator
 {

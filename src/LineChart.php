@@ -1,10 +1,10 @@
 <?php
 
-namespace ArielMejiaDev\LarapexCharts;
+namespace Dusanbre\LarapexCharts;
 
 
-use ArielMejiaDev\LarapexCharts\Contracts\MustAddComplexData;
-use ArielMejiaDev\LarapexCharts\Traits\ComplexChartDataAggregator;
+use Dusanbre\LarapexCharts\Contracts\MustAddComplexData;
+use Dusanbre\LarapexCharts\Traits\ComplexChartDataAggregator;
 
 class LineChart extends LarapexChart implements MustAddComplexData
 {

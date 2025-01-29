@@ -1,7 +1,7 @@
-<?php namespace ArielMejiaDev\LarapexCharts\Tests\Feature;
+<?php namespace Dusanbre\LarapexCharts\Tests\Feature;
 
-use ArielMejiaDev\LarapexCharts\LarapexChart;
-use ArielMejiaDev\LarapexCharts\Tests\TestCase;
+use Dusanbre\LarapexCharts\LarapexChart;
+use Dusanbre\LarapexCharts\Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ChartsTest extends TestCase

@@ -1,6 +1,6 @@
-<?php namespace ArielMejiaDev\LarapexCharts;
+<?php namespace Dusanbre\LarapexCharts;
 
-use ArielMejiaDev\LarapexCharts\Traits\HasOptions;
+use Dusanbre\LarapexCharts\Traits\HasOptions;
 use Illuminate\Support\Facades\View;
 
 class LarapexChart

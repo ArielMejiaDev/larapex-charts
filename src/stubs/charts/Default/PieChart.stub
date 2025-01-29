@@ -2,7 +2,7 @@
 
 namespace {{ namespace }};
 
-use ArielMejiaDev\LarapexCharts\LarapexChart;
+use Dusanbre\LarapexCharts\LarapexChart;
 
 class {{ class }}
 {
@@ -13,7 +13,7 @@ class {{ class }}
         $this->chart = $chart;
     }
 
-    public function build(): \ArielMejiaDev\LarapexCharts\PieChart
+    public function build(): \Dusanbre\LarapexCharts\PieChart
     {
         return $this->chart->pieChart()
             ->setTitle('Top 3 scorers of the team.')

@@ -1,5 +1,5 @@
 <?php
-namespace ArielMejiaDev\LarapexCharts\Traits;
+namespace Dusanbre\LarapexCharts\Traits;
 trait HasOptions{
     protected $options;
         /**

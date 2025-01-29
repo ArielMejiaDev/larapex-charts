@@ -1,10 +1,10 @@
 <?php
 
-namespace ArielMejiaDev\LarapexCharts;
+namespace Dusanbre\LarapexCharts;
 
 
-use ArielMejiaDev\LarapexCharts\Contracts\MustAddSimpleData;
-use ArielMejiaDev\LarapexCharts\Traits\SimpleChartDataAggregator;
+use Dusanbre\LarapexCharts\Contracts\MustAddSimpleData;
+use Dusanbre\LarapexCharts\Traits\SimpleChartDataAggregator;
 
 class PolarAreaChart extends LarapexChart implements MustAddSimpleData
 {

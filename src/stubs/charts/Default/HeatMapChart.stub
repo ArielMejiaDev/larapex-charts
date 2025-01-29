@@ -2,7 +2,7 @@
 
 namespace {{ namespace }};
 
-use ArielMejiaDev\LarapexCharts\LarapexChart;
+use Dusanbre\LarapexCharts\LarapexChart;
 
 class {{ class }}
 {
@@ -13,7 +13,7 @@ class {{ class }}
         $this->chart = $chart;
     }
 
-    public function build(): \ArielMejiaDev\LarapexCharts\HeatMapChart
+    public function build(): \Dusanbre\LarapexCharts\HeatMapChart
     {
         return $this->chart->heatMapChart()
             ->setTitle('Basic radar chart')

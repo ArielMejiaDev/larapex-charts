@@ -1,5 +1,5 @@
 {
-    "name": "arielmejiadev/larapex-charts",
+    "name": "dusanbre/larapex-charts",
     "description": "Package to provide easy api to build apex charts on Laravel",
     "keywords": [
         "arielmejiadev",
@@ -12,8 +12,8 @@
     "type": "library",
     "authors": [
         {
-            "name": "ArielMejiaDev",
-            "email": "arielmejiadev@gmail.com"
+            "name": "Dusan Antonijevic",
+            "email": "dusan.antonijevic2404@gmail.com"
         }
     ],
     "require": {

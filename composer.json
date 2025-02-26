@@ -18,13 +18,13 @@
     ],
     "require": {
         "php": "^8.0|^8.2",
-        "illuminate/support": "^9.0|^10.0|^11.0",
+        "illuminate/support": "^9.0|^10.0|^11.0|^12.0",
         "ext-json": "*"
     },
     "require-dev": {
         "orchestra/testbench": "^7.0|^8.0",
-        "phpunit/phpunit": "^9.0|^10.0",
-        "nunomaduro/collision": "^7.5"
+        "phpunit/phpunit": "^9.0|^10.0|^11.0",
+        "nunomaduro/collision": "^7.5|^8.1"
     },
     "autoload": {
         "psr-4": {

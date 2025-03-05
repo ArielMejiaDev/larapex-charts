@@ -11,9 +11,9 @@ class LarapexChart
     | Chart
     |--------------------------------------------------------------------------
     |
-    | This class build the chart by passing setters to the object, it will 
-    | use the method container and scripts to generate a JSON  
-    | in blade views, it works also with Vue JS components  
+    | This class build the chart by passing setters to the object, it will
+    | use the method container and scripts to generate a JSON
+    | in blade views, it works also with Vue JS components
     |
     */
 
@@ -52,7 +52,7 @@ class LarapexChart
     public function __construct()
     {
         $this->id = substr(str_shuffle(str_repeat($x = $this->chartLetters, ceil(25 / strlen($x)))), 1, 25);
-        $this->horizontal = json_encode(['horizontal' => false]);
+        $this->horizontal = json_encode(['horizontal' => false, 'isFunnel' => false]);
         $this->colors = json_encode(config('larapex-charts.colors'));
         $this->setXAxis([]);
         $this->grid = json_encode(['show' => false]);
@@ -114,6 +114,11 @@ class LarapexChart
     public function radarChart() :RadarChart
     {
         return new RadarChart();
+    }
+
+    public function funnelChart() :FunnelChart
+    {
+        return new FunnelChart();
     }
 
     /*
@@ -266,7 +271,7 @@ class LarapexChart
         $this->theme = $theme;
 	return $this;
     }
-  
+
     public function setSparkline(bool $enabled = true): LarapexChart
     {
         $this->sparkline = json_encode(['enabled' => $enabled]);

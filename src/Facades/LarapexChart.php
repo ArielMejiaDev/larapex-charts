@@ -1,6 +1,6 @@
 <?php
 
-namespace ArielMejiaDev\LarapexCharts\Facades;
+namespace marineusde\LarapexCharts\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

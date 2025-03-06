@@ -1,8 +1,8 @@
 <?php
 
-namespace ArielMejiaDev\LarapexCharts\Console;
+namespace marineusde\LarapexCharts\Console;
 
-use ArielMejiaDev\LarapexCharts\Traits\WithModelStub;
+use marineusde\LarapexCharts\Traits\WithModelStub;
 use Illuminate\Console\GeneratorCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;

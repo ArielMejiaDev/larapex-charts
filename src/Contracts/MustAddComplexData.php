@@ -1,7 +1,7 @@
 <?php
 
 
-namespace ArielMejiaDev\LarapexCharts\Contracts;
+namespace marineusde\LarapexCharts\Contracts;
 
 
 interface MustAddComplexData

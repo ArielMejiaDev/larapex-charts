@@ -2,7 +2,7 @@
 
 namespace {{ namespace }};
 
-use ArielMejiaDev\LarapexCharts\LarapexChart;
+use marineusde\LarapexCharts\LarapexChart;
 
 class {{ class }}
 {
@@ -13,7 +13,7 @@ class {{ class }}
         $this->chart = $chart;
     }
 
-    public function build(): \ArielMejiaDev\LarapexCharts\RadarChart
+    public function build(): \marineusde\LarapexCharts\RadarChart
     {
         return $this->chart->radarChart()
             ->setTitle('Individual Player Stats.')

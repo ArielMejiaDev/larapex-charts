@@ -1,7 +1,7 @@
-<?php namespace ArielMejiaDev\LarapexCharts\Tests;
+<?php namespace marineusde\LarapexCharts\Tests;
 
 use Orchestra\Testbench\TestCase as TestbenchTestCase;
-use ArielMejiaDev\LarapexCharts\LarapexChartsServiceProvider;
+use marineusde\LarapexCharts\LarapexChartsServiceProvider;
 
 class TestCase extends TestbenchTestCase
 {
@@ -32,7 +32,7 @@ class TestCase extends TestbenchTestCase
     protected function getPackageAliases($app): array
     {
         return [
-            'LarapexChart' => \ArielMejiaDev\LarapexCharts\Facades\LarapexChart::class
+            'LarapexChart' => \marineusde\LarapexCharts\Facades\LarapexChart::class
         ];
     }
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace ArielMejiaDev\LarapexCharts;
+namespace marineusde\LarapexCharts;
 
-use ArielMejiaDev\LarapexCharts\Contracts\MustAddComplexData;
-use ArielMejiaDev\LarapexCharts\Traits\ComplexChartDataAggregator;
+use marineusde\LarapexCharts\Contracts\MustAddComplexData;
+use marineusde\LarapexCharts\Traits\ComplexChartDataAggregator;
 
 class AreaChart extends LarapexChart implements MustAddComplexData
 {

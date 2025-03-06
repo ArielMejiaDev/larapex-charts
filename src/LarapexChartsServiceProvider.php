@@ -1,6 +1,6 @@
 <?php
 
-namespace ArielMejiaDev\LarapexCharts;
+namespace marineusde\LarapexCharts;
 
 use App\Console\Commands\ChartMakeCommand;
 use Illuminate\Filesystem\Filesystem;
@@ -10,7 +10,7 @@ class LarapexChartsServiceProvider extends ServiceProvider
 {
 
     /**
-     * Before laravel app get all providers and methods of laravel running 
+     * Before laravel app get all providers and methods of laravel running
      * The package must register the service to access to package class service container and Facade
      *
      * @return void
@@ -24,7 +24,7 @@ class LarapexChartsServiceProvider extends ServiceProvider
         $this->mergeConfigFrom($this->packageBasePath('config/larapex-charts.php'), 'larapex-charts');
 
         $this->commands([
-            \ArielMejiaDev\LarapexCharts\Console\ChartMakeCommand::class,
+            \marineusde\LarapexCharts\Console\ChartMakeCommand::class,
         ]);
     }
 
@@ -47,7 +47,7 @@ class LarapexChartsServiceProvider extends ServiceProvider
 
         $this->publishes([
             $this->packageBasePath('config/larapex-charts.php') => base_path('config/larapex-charts.php')
-        ], 'larapex-charts-config');        
+        ], 'larapex-charts-config');
 
         $this->publishes([
             $this->packageBasePath('stubs/Console/Commands') => app_path('Console/Commands')

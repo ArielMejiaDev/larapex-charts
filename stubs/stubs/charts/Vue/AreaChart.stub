@@ -2,7 +2,7 @@
 
 namespace {{ namespace }};
 
-use ArielMejiaDev\LarapexCharts\LarapexChart;
+use marineusde\LarapexCharts\LarapexChart;
 
 class {{ class }}
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace ArielMejiaDev\LarapexCharts\Traits;
+namespace marineusde\LarapexCharts\Traits;
 
 trait ComplexChartDataAggregator
 {

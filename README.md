@@ -40,13 +40,13 @@ $chart = (new LarapexChart)->setTitle('Posts')
 Remember to import the Facade to your controller with 
 
 ```php
-use ArielMejiaDev\LarapexCharts\Facades\LarapexChart;
+use marineusde\LarapexCharts\Facades\LarapexChart;
 ```
 
 Or importing the LarapexChart class:
 
 ```php
-use ArielMejiaDev\LarapexCharts\LarapexChart;
+use marineusde\LarapexCharts\LarapexChart;
 ```
 
 Then in your view (Blade file) add: 

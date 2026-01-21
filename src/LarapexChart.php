@@ -202,10 +202,11 @@ class LarapexChart
         return $this;
     }
 
-    public function setGrid($color = '#e5e5e5', $opacity = 0.1) :LarapexChart
+    public function setGrid($color = '#e5e5e5', $opacity = 0.1, int $strokeDashArray = 5) :LarapexChart
     {
         $this->grid = json_encode([
             'show' => true,
+            'strokeDashArray' => $strokeDashArray,	  
             'row' => [
                 'colors' => [$color, 'transparent'],
                 'opacity' => $opacity,

@@ -32,7 +32,10 @@
             align: '{!! $chart->subtitlePosition() !!}'
         },
         xaxis: {
-            categories: {!! $chart->xAxis() !!}
+            categories: {!! $chart->xAxis() !!},
+            labels : {
+                show: {!! $chart->showXAxisLabels() !!}
+            }
         },
         @if ($chart->yAxis())
             yaxis: {!! $chart->yAxis() !!},

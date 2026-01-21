@@ -21,6 +21,7 @@
         series: {!! $chart->dataset() !!},
         dataLabels: {!! $chart->dataLabels() !!},
         @if($chart->labels())
+        
             labels: {!! json_encode($chart->labels(), true) !!},
         @endif
         title: {

@@ -3,17 +3,35 @@
 use ArielMejiaDev\LarapexCharts\Traits\HasOptions;
 use Illuminate\Support\Facades\View;
 
+/**
+ * @method LarapexChart addData(array $array, ?string $name = null)
+ */
 class LarapexChart
 {
     use HasOptions;
+
+    const COLOR_OCEAN_BLUE = '#008FFB';
+    const COLOR_MINT_GREEN = '#00E396';
+    const COLOR_AMBER_ORANGE = '#feb019';
+    const COLOR_CORAL_RED = '#ff455f';
+    const COLOR_AMETHYST_PURPLE = '#775dd0';
+    const COLOR_CYAN_SKY = '#80effe';
+    const COLOR_NAVY_BLUE = '#0077B5';
+    const COLOR_ROSE_PINK = '#ff6384';
+    const COLOR_SILVER_GRAY = '#c9cbcf';
+    const COLOR_ROYAL_BLUE = '#0057ff';
+    const COLOR_AZURE_BLUE = '#00a9f4';
+    const COLOR_TEAL_TURQUOISE = '#2ccdc9';
+    const COLOR_PERIWINKLE_BLUE = '#5e72e4';
+
     /*
     |--------------------------------------------------------------------------
     | Chart
     |--------------------------------------------------------------------------
     |
-    | This class build the chart by passing setters to the object, it will 
-    | use the method container and scripts to generate a JSON  
-    | in blade views, it works also with Vue JS components  
+    | This class build the chart by passing setters to the object, it will
+    | use the method container and scripts to generate a JSON
+    | in blade views, it works also with Vue JS components
     |
     */
 
@@ -172,6 +190,12 @@ class LarapexChart
         return $this;
     }
 
+    public function setMonochromeColor(string $color) :LarapexChart
+    {
+        $this->colors = json_encode([$color]);
+        return $this;
+    }
+
     public function setHorizontal(bool $horizontal) :LarapexChart
     {
         $this->horizontal = json_encode(['horizontal' => $horizontal]);
@@ -207,7 +231,7 @@ class LarapexChart
     {
         $this->grid = json_encode([
             'show' => true,
-            'strokeDashArray' => $strokeDashArray,	  
+            'strokeDashArray' => $strokeDashArray,
             'row' => [
                 'colors' => [$color, 'transparent'],
                 'opacity' => $opacity,
@@ -217,11 +241,13 @@ class LarapexChart
         return $this;
     }
 
-    public function setYAxis($min, $max) :LarapexChart
+    public function setYAxis($min, $max, ?int $tickAmount = null, $show = true) :LarapexChart
     {
         $this->yAxis = json_encode([
             'min' => $min,
-            'max' => $max
+            'max' => $max,
+            'tickAmount' => $tickAmount ?? $max,
+            'show' => $show,
         ]);
         return $this;
     }
@@ -278,7 +304,7 @@ class LarapexChart
         $this->theme = $theme;
 	return $this;
     }
-  
+
     public function setSparkline(bool $enabled = true): LarapexChart
     {
         $this->sparkline = json_encode(['enabled' => $enabled]);

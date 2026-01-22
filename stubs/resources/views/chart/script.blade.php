@@ -34,7 +34,7 @@
         xaxis: {
             categories: {!! $chart->xAxis() !!},
             labels : {
-                show: {!! $chart->showXAxisLabels() !!}
+                show: {!! json_encode($chart->showXAxisLabels(), true) !!},
             }
         },
         @if ($chart->yAxis())

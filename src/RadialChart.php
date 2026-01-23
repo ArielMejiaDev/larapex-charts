@@ -15,10 +15,4 @@ class RadialChart extends LarapexChart implements MustAddSimpleData
         parent::__construct();
         $this->type = 'radialBar';
     }
-
-    public function addRings(array $data) :RadialChart
-    {
-        $this->addData($data);
-        return $this;
-    }
 }

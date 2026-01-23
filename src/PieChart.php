@@ -15,10 +15,4 @@ class PieChart extends LarapexChart implements MustAddSimpleData
         parent::__construct();
         $this->type = 'pie';
     }
-
-    public function addPieces(array $data) :PieChart
-    {
-        $this->addData($data);
-        return $this;
-    }
 }

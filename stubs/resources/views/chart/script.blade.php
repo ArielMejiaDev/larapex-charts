@@ -37,6 +37,11 @@
                 show: {!! json_encode($chart->showXAxisLabels(), true) !!},
             }
         },
+        yaxis: {
+            labels : {
+                show: {!! json_encode($chart->showYAxisLabels(), true) !!},
+            }
+        },
         @if ($chart->yAxis())
             yaxis: {!! $chart->yAxis() !!},
         @endif

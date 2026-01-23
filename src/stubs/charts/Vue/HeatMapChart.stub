@@ -17,8 +17,8 @@ class {{ class }}
     {
         return $this->chart->heatMapChart()
             ->setTitle('Basic radar chart')
-            ->addData('Sales', [80, 50, 30, 40, 100, 20])
-            ->addHeat('Income', [70, 10, 80, 20, 60, 40])
+            ->addData([80, 50, 30, 40, 100, 20], 'Sales')
+            ->addData([70, 10, 80, 20, 60, 40], 'Income')
             ->setMarkers(['#FFA41B', '#4F46E5'], 7, 10)
             ->setXAxis(['January', 'February', 'March', 'April', 'May', 'June'])
             ->toVue();

@@ -18,7 +18,7 @@ class {{ class }}
         return $this->chart->radarChart()
             ->setTitle('Individual Player Stats.')
             ->setSubtitle('Season 2021.')
-            ->addData('Stats', [70, 93, 78, 97, 50, 90])
+            ->addData([70, 93, 78, 97, 50, 90], 'Stats')
             ->setXAxis(['Pass', 'Dribble', 'Shot', 'Stamina', 'Long shots', 'Tactical'])
             ->setMarkers(['#303F9F'], 7, 10)
             ->toVue();

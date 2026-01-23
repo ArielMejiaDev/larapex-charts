@@ -14,9 +14,4 @@ class BarChart extends LarapexChart implements MustAddComplexData
         parent::__construct();
         $this->type = 'bar';
     }
-
-    public function addBar(string $name, array $data) :BarChart
-    {
-        return $this->addData($name, $data);
-    }
 }

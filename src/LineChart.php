@@ -15,9 +15,4 @@ class LineChart extends LarapexChart implements MustAddComplexData
         parent::__construct();
         $this->type = 'line';
     }
-
-    public function addLine(string $name, array $data) :LineChart
-    {
-        return $this->addData($name, $data);
-    }
 }

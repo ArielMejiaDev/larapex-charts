@@ -24,7 +24,10 @@
     "require-dev": {
         "orchestra/testbench": "^7.0|^8.0|^9.0|^10.0",
         "phpunit/phpunit": "^9.0|^10.0|^11.0",
-        "nunomaduro/collision": "^7.5|^8.1"
+        "nunomaduro/collision": "^7.5|^8.1",
+        "pestphp/pest": "^3.0",
+        "pestphp/pest-plugin-arch": "^3.0",
+        "pestphp/pest-plugin-laravel": "^3.0"
     },
     "autoload": {
         "psr-4": {
@@ -48,6 +51,11 @@
             "aliases": {
                 "LarapexChart": "ArielMejiaDev\\LarapexCharts\\Facades\\LarapexChart"
             }
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
         }
     }
 }

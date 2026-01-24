@@ -31,10 +31,10 @@
             text: '{!! $chart->subtitle() !!}',
             align: '{!! $chart->subtitlePosition() !!}'
         },
-        xaxis: {
-            categories: {!! $chart->xAxis() !!},
+        xaxis: {!! $chart->xAxis() !!},
+        yaxis: {
             labels : {
-                show: {!! $chart->showXAxisLabels() !!}
+                show: {!! json_encode($chart->showYAxisLabels(), true) !!},
             }
         },
         @if ($chart->yAxis())

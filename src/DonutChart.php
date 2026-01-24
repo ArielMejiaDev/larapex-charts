@@ -15,10 +15,4 @@ class DonutChart extends LarapexChart implements MustAddSimpleData
         parent::__construct();
         $this->type = 'donut';
     }
-
-    public function addPieces(array $data) :DonutChart
-    {
-        $this->addData($data);
-        return $this;
-    }
 }

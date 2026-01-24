@@ -1,5 +1,7 @@
 <?php
 
+use ArielMejiaDev\LarapexCharts\LarapexChart;
+
 return [
 
     /*
@@ -26,7 +28,18 @@ return [
     */
 
     'colors' => [
-        '#008FFB', '#00E396', '#feb019', '#ff455f', '#775dd0', '#80effe',
-        '#0077B5', '#ff6384', '#c9cbcf', '#0057ff', '#00a9f4', '#2ccdc9', '#5e72e4'
-    ]
+        LarapexChart::COLOR_OCEAN_BLUE,
+        LarapexChart::COLOR_MINT_GREEN,
+        LarapexChart::COLOR_AMBER_ORANGE,
+        LarapexChart::COLOR_CORAL_RED,
+        LarapexChart::COLOR_AMETHYST_PURPLE,
+        LarapexChart::COLOR_CYAN_SKY,
+        LarapexChart::COLOR_NAVY_BLUE,
+        LarapexChart::COLOR_ROSE_PINK,
+        LarapexChart::COLOR_ROYAL_BLUE,
+        LarapexChart::COLOR_SILVER_GRAY,
+        LarapexChart::COLOR_AZURE_BLUE,
+        LarapexChart::COLOR_TEAL_TURQUOISE,
+        LarapexChart::COLOR_PERIWINKLE_BLUE,
+    ],
 ];

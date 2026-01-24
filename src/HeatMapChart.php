@@ -16,9 +16,4 @@ class HeatMapChart extends LarapexChart implements MustAddComplexData
         parent::__construct();
         $this->type = 'heatmap';
     }
-
-    public function addHeat(string $name, array $data) :HeatMapChart
-    {
-        return $this->addData($name, $data);
-    }
 }

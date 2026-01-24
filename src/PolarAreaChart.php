@@ -15,10 +15,4 @@ class PolarAreaChart extends LarapexChart implements MustAddSimpleData
         parent::__construct();
         $this->type = 'polarArea';
     }
-
-    public function addPolarAreas(array $data) :PolarAreaChart
-    {
-        $this->addData($data);
-        return $this;
-    }
 }

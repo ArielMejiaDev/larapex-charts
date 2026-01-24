@@ -19,8 +19,8 @@ class {{ class }}
             ->setTitle('Los Angeles vs Miami.')
             ->setSubtitle('Wins during season 2021.')
             ->setColors(['#FFC107', '#D32F2F'])
-            ->addData('San Francisco', [6, 9, 3, 4, 10, 8])
-            ->addData('Boston', [7, 3, 8, 2, 6, 4])
+            ->addData([6, 9, 3, 4, 10, 8], 'Los Angeles')
+            ->addData([7, 3, 8, 2, 6, 4], 'Miami)
             ->setXAxis(['January', 'February', 'March', 'April', 'May', 'June'])
             ->toVue();
     }

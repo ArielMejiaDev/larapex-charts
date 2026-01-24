@@ -143,18 +143,6 @@ class LarapexChart
     |--------------------------------------------------------------------------
     */
 
-    /**
-     *
-     * @deprecated deprecated since version 2.0
-     * @param null $type
-     * @return $this
-     */
-    public function setType($type = null) :LarapexChart
-    {
-        $this->type = $type;
-        return $this;
-    }
-
 	public function setFontFamily($fontFamily) :LarapexChart
 	{
 		$this->fontFamily = $fontFamily;
@@ -222,9 +210,16 @@ class LarapexChart
         return $this;
     }
 
-    public function setXAxis(array $categories) :LarapexChart
-    {
-        $this->xAxis = json_encode($categories);
+    public function setXAxis(array $categories, string $type = 'category') :LarapexChart
+    {   
+        $this->xAxis = json_encode([
+            'type' => $type , 
+            'categories' => $categories,
+            'labels' => [
+                'show' => $this->showXAxisLabels(),
+            ]
+        ]);
+
         return $this;
     }
 
@@ -530,12 +525,7 @@ class LarapexChart
                 'text' => $this->subtitle() ? $this->subtitle() : '',
                 'align' => $this->subtitlePosition() ? $this->subtitlePosition() : '',
             ],
-            'xaxis' => [
-                'categories' => json_decode($this->xAxis()),
-                'labels' => [
-                    'show' => $this->showXAxisLabels(),
-                ]
-            ],
+            'xaxis' => $this->xAxis(),
             'yaxis' => [
                 'labels' => [
                     'show' => $this->showYAxisLabels(),
@@ -598,12 +588,7 @@ class LarapexChart
                 'text' => $this->subtitle() ? $this->subtitle() : '',
                 'align' => $this->subtitlePosition() ? $this->subtitlePosition() : '',
             ],
-            'xaxis' => [
-                'categories' => json_decode($this->xAxis()),
-                'labels' => [
-                    'show' => $this->showXAxisLabels(),
-                ]
-            ],
+            'xaxis' => $this->xAxis(),
             'yaxis' => [
                 'labels' => [
                     'show' => $this->showYAxisLabels(),

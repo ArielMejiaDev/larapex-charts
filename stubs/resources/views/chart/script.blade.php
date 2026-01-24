@@ -31,12 +31,7 @@
             text: '{!! $chart->subtitle() !!}',
             align: '{!! $chart->subtitlePosition() !!}'
         },
-        xaxis: {
-            categories: {!! $chart->xAxis() !!},
-            labels : {
-                show: {!! json_encode($chart->showXAxisLabels(), true) !!},
-            }
-        },
+        xaxis: {!! $chart->xAxis() !!},
         yaxis: {
             labels : {
                 show: {!! json_encode($chart->showYAxisLabels(), true) !!},

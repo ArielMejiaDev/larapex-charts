@@ -24,6 +24,10 @@ class LarapexChart
     const COLOR_TEAL_TURQUOISE = '#2ccdc9';
     const COLOR_PERIWINKLE_BLUE = '#5e72e4';
 
+    const STATE_DARKEN = 'darken';
+    const STATE_LIGHTEN = 'lighten';
+    const STATE_NONE = 'none';
+
     /*
     |--------------------------------------------------------------------------
     | Chart
@@ -63,6 +67,7 @@ class LarapexChart
     protected string $theme = 'light';
     protected string $sparkline;
     private string $chartLetters = 'abcdefghijklmnopqrstuvwxyz';
+    private array $states = [];
 
     /*
     |--------------------------------------------------------------------------
@@ -331,6 +336,29 @@ class LarapexChart
         return $this;
     }
 
+    public function setStatesHover(string $type = 'lighten'): self
+    {
+        $this->states['hover'] = [
+            'filter' => [
+                'type' => $type,
+            ]
+        ];
+
+        return $this;
+    }
+
+    public function setStatesActive(string $type = 'darken', bool $allowMultipleDataPointsSelection = false): self
+    {
+        $this->states['active'] = [
+            'allowMultipleDataPointsSelection' => $allowMultipleDataPointsSelection,    
+            'filter' => [
+                'type' => $type,
+            ]
+        ];
+
+        return $this;
+    }
+
     /*
     |--------------------------------------------------------------------------
     | Getters
@@ -487,6 +515,25 @@ class LarapexChart
     public function showYAxisLabels(): bool
     {
         return $this->showYAxisLabels;
+    }
+
+    public function states(): array
+    {
+        return [
+            'states' => [
+                'hover' => isset($this->states['hover']) ? $this->states['hover'] : [
+                    'filter' => [
+                        'type' => 'lighten',
+                    ]
+                ],
+                'active' => isset($this->states['active']) ? $this->states['active'] : [
+                    'allowMultipleDataPointsSelection' => false,    
+                    'filter' => [
+                        'type' => 'darken',
+                    ]
+                ],
+            ]
+        ];
     }
 
     /*

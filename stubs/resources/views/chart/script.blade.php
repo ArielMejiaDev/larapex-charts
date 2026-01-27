@@ -47,7 +47,8 @@
         @endif
         legend: {
             show: {!! $chart->showLegend() !!}
-        }
+        },
+        states: {!! json_encode($chart->states()['states']) !!}
     }
 
     var chart = new ApexCharts(document.querySelector("#{!! $chart->id() !!}"), options);

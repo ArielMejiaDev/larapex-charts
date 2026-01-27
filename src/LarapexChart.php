@@ -583,6 +583,7 @@ class LarapexChart
             'legend' => [
                 'show' => $this->showLegend()
             ],
+            'states' => $this->states()['states'],
         ];
 
         if($this->labels()) {
@@ -645,7 +646,8 @@ class LarapexChart
             'markers' => json_decode($this->markers()),
             'legend' => [
                 'show' => $this->showLegend()
-            ]
+            ],
+            'states' => $this->states()['states'],
         ];
 
         if($this->labels()) {

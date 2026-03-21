@@ -2,6 +2,7 @@
 
 use ArielMejiaDev\LarapexCharts\LarapexChart;
 use ArielMejiaDev\LarapexCharts\Tests\TestCase;
+use ArielMejiaDev\LarapexCharts\Facades\LarapexChart as LarapexChartFacade;
 use PHPUnit\Framework\Attributes\Test;
 
 class ChartsTest extends TestCase
@@ -255,5 +256,107 @@ class ChartsTest extends TestCase
         $this->assertEquals($chart->id(), $chart->container()['id']);
         $this->assertEquals($chart, $chart->script()['chart']);
         $this->assertEquals('radar', $chart->type());
+    }
+
+    #[Test]
+    public function it_tests_multiple_charts_have_unique_ids_and_independent_data(): void
+    {
+        $chart1 = (new LarapexChart)->pieChart()
+            ->setTitle('Chart One')
+            ->setLabels(['A', 'B'])
+            ->addData([10, 20]);
+
+        $chart2 = (new LarapexChart)->barChart()
+            ->setTitle('Chart Two')
+            ->setXAxis(['Jan', 'Feb'])
+            ->addData([30, 40], 'Series');
+
+        $this->assertNotEquals($chart1->id(), $chart2->id());
+        $this->assertNotEquals($chart1->type(), $chart2->type());
+        $this->assertNotEquals($chart1->title(), $chart2->title());
+        $this->assertNotEquals($chart1->dataset(), $chart2->dataset());
+
+        $container1 = $chart1->container()->render();
+        $container2 = $chart2->container()->render();
+        $this->assertStringContainsString($chart1->id(), $container1);
+        $this->assertStringContainsString($chart2->id(), $container2);
+        $this->assertNotEquals($container1, $container2);
+
+        $script1 = $chart1->script()->render();
+        $script2 = $chart2->script()->render();
+        $this->assertStringContainsString($chart1->id(), $script1);
+        $this->assertStringContainsString($chart2->id(), $script2);
+        $this->assertStringContainsString('Chart One', $script1);
+        $this->assertStringContainsString('Chart Two', $script2);
+        $this->assertStringNotContainsString('Chart Two', $script1);
+        $this->assertStringNotContainsString('Chart One', $script2);
+    }
+
+    #[Test]
+    public function it_tests_multiple_charts_via_facade_have_independent_instances(): void
+    {
+        $chart1 = LarapexChartFacade::pieChart()
+            ->setTitle('Facade Chart One')
+            ->addData([10, 20]);
+
+        $chart2 = LarapexChartFacade::barChart()
+            ->setTitle('Facade Chart Two')
+            ->addData([30, 40], 'Series');
+
+        $this->assertNotEquals($chart1->id(), $chart2->id());
+        $this->assertEquals('pie', $chart1->type());
+        $this->assertEquals('bar', $chart2->type());
+        $this->assertEquals('Facade Chart One', $chart1->title());
+        $this->assertEquals('Facade Chart Two', $chart2->title());
+    }
+
+    #[Test]
+    public function it_tests_multiple_charts_toVue_returns_independent_data(): void
+    {
+        $chart1 = (new LarapexChart)->areaChart()
+            ->setTitle('Vue Chart One')
+            ->setXAxis(['Jan', 'Feb'])
+            ->addData([10, 20], 'Series A');
+
+        $chart2 = (new LarapexChart)->lineChart()
+            ->setTitle('Vue Chart Two')
+            ->setXAxis(['Mar', 'Apr'])
+            ->addData([30, 40], 'Series B');
+
+        $vue1 = $chart1->toVue();
+        $vue2 = $chart2->toVue();
+
+        $this->assertEquals('area', $vue1['type']);
+        $this->assertEquals('line', $vue2['type']);
+        $this->assertNotEquals($vue1['options']['chart']['id'], $vue2['options']['chart']['id']);
+        $this->assertEquals('Vue Chart One', $vue1['options']['title']['text']);
+        $this->assertEquals('Vue Chart Two', $vue2['options']['title']['text']);
+    }
+
+    #[Test]
+    public function it_tests_di_injected_instance_produces_independent_charts(): void
+    {
+        // Simulates: public function __construct(LarapexChart $chart) { $this->chart = $chart; }
+        $shared = $this->app->make(LarapexChart::class);
+
+        // Two charts created from the same DI-injected instance
+        $vue1 = $shared->donutChart()
+            ->setTitle('Unsubscribed Users')
+            ->addData([60, 14, 55])
+            ->setLabels(['Jan', 'Feb', 'Mar'])
+            ->toVue();
+
+        $vue2 = $shared->areaChart()
+            ->setTitle('Monthly Revenue')
+            ->setXAxis(['Jan', 'Feb', 'Mar'])
+            ->addData([1000, 2000, 3000], 'Revenue')
+            ->toVue();
+
+        // Must be completely independent
+        $this->assertNotEquals($vue1['options']['chart']['id'], $vue2['options']['chart']['id']);
+        $this->assertEquals('donut', $vue1['type']);
+        $this->assertEquals('area', $vue2['type']);
+        $this->assertEquals('Unsubscribed Users', $vue1['options']['title']['text']);
+        $this->assertEquals('Monthly Revenue', $vue2['options']['title']['text']);
     }
 }

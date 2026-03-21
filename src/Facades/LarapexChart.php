@@ -6,11 +6,8 @@ use Illuminate\Support\Facades\Facade;
 
 class LarapexChart extends Facade
 {
-
-    protected static function getFacadeAccessor()
+    protected static function getFacadeAccessor(): string
     {
-        static::clearResolvedInstance('larapex-chart');
         return 'larapex-chart';
     }
-
 }

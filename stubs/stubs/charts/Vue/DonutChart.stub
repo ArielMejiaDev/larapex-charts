@@ -6,16 +6,9 @@ use ArielMejiaDev\LarapexCharts\LarapexChart;
 
 class {{ class }}
 {
-    protected $chart;
-
-    public function __construct(LarapexChart $chart)
-    {
-        $this->chart = $chart;
-    }
-
     public function build(): array
     {
-        return $this->chart->donutChart()
+        return (new LarapexChart)->donutChart()
             ->setTitle('Top 3 scorers of the team.')
             ->setSubtitle('Season 2021.')
             ->addData([20, 24, 30])

@@ -15,7 +15,7 @@ class LarapexChartsServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('larapex-chart', function(){
+        $this->app->bind('larapex-chart', function () {
             return new LarapexChart;
         });
 

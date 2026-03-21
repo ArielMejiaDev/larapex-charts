@@ -6,16 +6,9 @@ use ArielMejiaDev\LarapexCharts\LarapexChart;
 
 class {{ class }}
 {
-    protected $chart;
-
-    public function __construct(LarapexChart $chart)
-    {
-        $this->chart = $chart;
-    }
-
     public function build(): array
     {
-        return $this->chart->radarChart()
+        return (new LarapexChart)->radarChart()
             ->setTitle('Individual Player Stats.')
             ->setSubtitle('Season 2021.')
             ->addData('Stats', [70, 93, 78, 97, 50, 90])

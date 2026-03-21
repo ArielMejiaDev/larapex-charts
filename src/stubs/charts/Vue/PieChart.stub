@@ -6,16 +6,9 @@ use ArielMejiaDev\LarapexCharts\LarapexChart;
 
 class {{ class }}
 {
-    protected $chart;
-
-    public function __construct(LarapexChart $chart)
-    {
-        $this->chart = $chart;
-    }
-
     public function build(): array
     {
-        return $this->chart->pieChart()
+        return (new LarapexChart)->pieChart()
             ->setTitle('Top 3 scorers of the team.')
             ->setSubtitle('Season 2021.')
             ->addData([40, 50, 30])

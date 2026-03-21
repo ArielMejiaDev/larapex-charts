@@ -2,13 +2,11 @@
 
 use ArielMejiaDev\LarapexCharts\LarapexChart;
 use ArielMejiaDev\LarapexCharts\Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\Test;
 
 class ChartsTest extends TestCase
 {
-    use RefreshDatabase;
-
-    /** @test */
+    #[Test]
     public function it_tests_larapex_charts_can_render_pie_charts_by_default(): void
     {
         $chart = (new LarapexChart)->setTitle('Users Test Chart');
@@ -17,7 +15,7 @@ class ChartsTest extends TestCase
         $this->assertEquals('area', $anotherChart->type());
     }
 
-    /** @test */
+    #[Test]
     public function it_tests_larapex_charts_can_render_pie_chart(): void
     {
         $chart = (new LarapexChart)->pieChart()
@@ -31,7 +29,7 @@ class ChartsTest extends TestCase
         $this->assertEquals('pie', $chart->type());
     }
 
-    /** @test */
+    #[Test]
     public function it_tests_larapex_charts_can_render_donut_chart(): void
     {
         $chart = (new LarapexChart)->donutChart()
@@ -43,7 +41,7 @@ class ChartsTest extends TestCase
         $this->assertEquals('donut', $chart->type());
     }
 
-    /** @test */
+    #[Test]
     public function it_tests_larapex_can_render_radial_bar_charts(): void
     {
         $chart = (new LarapexChart)->radialChart()
@@ -55,7 +53,7 @@ class ChartsTest extends TestCase
         $this->assertEquals('radialBar', $chart->type());
     }
 
-    /** @test */
+    #[Test]
     public function it_tests_larapex_charts_can_render_polar_chart(): void
     {
         $chart = (new LarapexChart)->polarAreaChart()
@@ -67,7 +65,7 @@ class ChartsTest extends TestCase
         $this->assertEquals('polarArea', $chart->type());
     }
 
-    /** @test */
+    #[Test]
     public function larapex_can_render_line_charts(): void
     {
         $chart = (new LarapexChart)->lineChart()
@@ -91,7 +89,7 @@ class ChartsTest extends TestCase
         $this->assertEquals('line', $chart->type());
     }
 
-    /** @test */
+    #[Test]
     public function it_tests_larapex_charts_can_create_an_area_chart(): void
     {
         $chart = (new LarapexChart)->areaChart()
@@ -116,7 +114,7 @@ class ChartsTest extends TestCase
         $this->assertEquals('area', $chart->type());
     }
 
-    /** @test */
+    #[Test]
     public function it_tests_larapex_charts_can_render_bar_charts(): void
     {
         $chart = (new LarapexChart)->barChart()
@@ -154,7 +152,7 @@ class ChartsTest extends TestCase
         $this->assertEquals('bar', $chart->type());
     }
 
-    /** @test */
+    #[Test]
     public function it_tests_larapex_charts_can_render_stacked_bar_chart(): void
     {
         $chart = (new LarapexChart)->barChart()
@@ -182,7 +180,7 @@ class ChartsTest extends TestCase
         $this->assertTrue($chart->stacked());
     }
 
-    /** @test */
+    #[Test]
     public function it_tests_larapex_charts_can_render_horizontal_bar_chart(): void
     {
         $chart = (new LarapexChart)->barChart()
@@ -211,7 +209,7 @@ class ChartsTest extends TestCase
         $this->assertTrue($chartHorizontalOrientation);
     }
 
-    /** @test */
+    #[Test]
     public function it_tests_larapex_charts_can_render_heatmap_chart(): void
     {
         $chart = (new LarapexChart)->heatMapChart()
@@ -235,7 +233,7 @@ class ChartsTest extends TestCase
         $this->assertEquals('heatmap', $chart->type());
     }
     
-    /** @test */
+    #[Test]
     public function it_tests_larapex_charts_can_render_radar_chart(): void
     {
         $chart = (new LarapexChart)->radarChart()

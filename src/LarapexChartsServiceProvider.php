@@ -2,8 +2,6 @@
 
 namespace ArielMejiaDev\LarapexCharts;
 
-use App\Console\Commands\ChartMakeCommand;
-use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\ServiceProvider;
 
 class LarapexChartsServiceProvider extends ServiceProvider

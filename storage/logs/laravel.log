@@ -1,0 +1,34 @@
+[2026-03-21 07:38:28] production.ERROR: The /Users/arielmejia/Developer/packages/larapex-charts/bootstrap/cache directory must be present and writable. {"exception":"[object] (Exception(code: 0): The /Users/arielmejia/Developer/packages/larapex-charts/bootstrap/cache directory must be present and writable. at /Users/arielmejia/Developer/packages/larapex-charts/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php:179)
+[stacktrace]
+#0 /Users/arielmejia/Developer/packages/larapex-charts/vendor/orchestra/testbench-core/src/Foundation/PackageManifest.php(158): Illuminate\\Foundation\\PackageManifest->write(Array)
+#1 /Users/arielmejia/Developer/packages/larapex-charts/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(132): Orchestra\\Testbench\\Foundation\\PackageManifest->write(Array)
+#2 /Users/arielmejia/Developer/packages/larapex-charts/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(108): Illuminate\\Foundation\\PackageManifest->build()
+#3 /Users/arielmejia/Developer/packages/larapex-charts/vendor/orchestra/testbench-core/src/Foundation/PackageManifest.php(103): Illuminate\\Foundation\\PackageManifest->getManifest()
+#4 /Users/arielmejia/Developer/packages/larapex-charts/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(90): Orchestra\\Testbench\\Foundation\\PackageManifest->getManifest()
+#5 /Users/arielmejia/Developer/packages/larapex-charts/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(79): Illuminate\\Foundation\\PackageManifest->config('aliases')
+#6 /Users/arielmejia/Developer/packages/larapex-charts/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\\Foundation\\PackageManifest->aliases()
+#7 /Users/arielmejia/Developer/packages/larapex-charts/vendor/orchestra/testbench-core/src/Concerns/CreatesApplication.php(533): Illuminate\\Foundation\\Bootstrap\\RegisterFacades->bootstrap(Object(Illuminate\\Foundation\\Application))
+#8 /Users/arielmejia/Developer/packages/larapex-charts/vendor/orchestra/testbench-core/src/Concerns/CreatesApplication.php(288): Orchestra\\Testbench\\Foundation\\Application->resolveApplicationBootstrappers(Object(Illuminate\\Foundation\\Application))
+#9 /Users/arielmejia/Developer/packages/larapex-charts/vendor/orchestra/testbench-core/src/Foundation/Application.php(197): Orchestra\\Testbench\\Foundation\\Application->createApplication()
+#10 /private/tmp/test_charts.php(11): Orchestra\\Testbench\\Foundation\\Application::create('/Users/arielmej...')
+#11 {main}
+"} 
+[2026-03-21 07:40:20] production.ERROR: Please provide a valid cache path. {"exception":"[object] (InvalidArgumentException(code: 0): Please provide a valid cache path. at /Users/arielmejia/Developer/packages/larapex-charts/vendor/laravel/framework/src/Illuminate/View/Compilers/Compiler.php:75)
+[stacktrace]
+#0 /Users/arielmejia/Developer/packages/larapex-charts/vendor/laravel/framework/src/Illuminate/View/ViewServiceProvider.php(97): Illuminate\\View\\Compilers\\Compiler->__construct(Object(Illuminate\\Filesystem\\Filesystem), false, '', true, 'php', true)
+#1 /Users/arielmejia/Developer/packages/larapex-charts/vendor/laravel/framework/src/Illuminate/Container/Container.php(1118): Illuminate\\View\\ViewServiceProvider->{closure:Illuminate\\View\\ViewServiceProvider::registerBladeCompiler():96}(Object(Illuminate\\Foundation\\Application), Array)
+#2 /Users/arielmejia/Developer/packages/larapex-charts/vendor/laravel/framework/src/Illuminate/Container/Container.php(936): Illuminate\\Container\\Container->build(Object(Closure))
+#3 /Users/arielmejia/Developer/packages/larapex-charts/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate\\Container\\Container->resolve('blade.compiler', Array, true)
+#4 /Users/arielmejia/Developer/packages/larapex-charts/vendor/laravel/framework/src/Illuminate/Container/Container.php(864): Illuminate\\Foundation\\Application->resolve('blade.compiler', Array)
+#5 /Users/arielmejia/Developer/packages/larapex-charts/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate\\Container\\Container->make('blade.compiler', Array)
+#6 /Users/arielmejia/Developer/packages/larapex-charts/vendor/laravel/framework/src/Illuminate/View/ViewServiceProvider.php(169): Illuminate\\Foundation\\Application->make('blade.compiler')
+#7 [internal function]: Illuminate\\View\\ViewServiceProvider->{closure:Illuminate\\View\\ViewServiceProvider::registerBladeEngine():165}()
+#8 /Users/arielmejia/Developer/packages/larapex-charts/vendor/laravel/framework/src/Illuminate/View/Engines/EngineResolver.php(55): call_user_func(Object(Closure))
+#9 /Users/arielmejia/Developer/packages/larapex-charts/vendor/laravel/framework/src/Illuminate/View/Factory.php(325): Illuminate\\View\\Engines\\EngineResolver->resolve('blade')
+#10 /Users/arielmejia/Developer/packages/larapex-charts/vendor/laravel/framework/src/Illuminate/View/Factory.php(287): Illuminate\\View\\Factory->getEngineFromPath('/Users/arielmej...')
+#11 /Users/arielmejia/Developer/packages/larapex-charts/vendor/laravel/framework/src/Illuminate/View/Factory.php(159): Illuminate\\View\\Factory->viewInstance('larapex-charts:...', '/Users/arielmej...', Array)
+#12 /Users/arielmejia/Developer/packages/larapex-charts/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(363): Illuminate\\View\\Factory->make('larapex-charts:...', Array)
+#13 /Users/arielmejia/Developer/packages/larapex-charts/src/LarapexChart.php(378): Illuminate\\Support\\Facades\\Facade::__callStatic('make', Array)
+#14 /private/tmp/test_render.php(17): ArielMejiaDev\\LarapexCharts\\LarapexChart->container()
+#15 {main}
+"} 

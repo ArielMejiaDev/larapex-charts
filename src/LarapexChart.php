@@ -546,6 +546,7 @@ class LarapexChart
     {
         $options = [
             'chart' => [
+                'id' => $this->id(),
                 'type' => $this->type(),
                 'height' => $this->height(),
                 'width' => $this->width(),
@@ -613,6 +614,7 @@ class LarapexChart
     {
         $options = [
             'chart' => [
+                'id' => $this->id(),
                 'height' => $this->height(),
                 'toolbar' => json_decode($this->toolbar()),
                 'zoom' => json_decode($this->zoom()),

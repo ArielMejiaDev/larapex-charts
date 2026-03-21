@@ -6,16 +6,9 @@ use ArielMejiaDev\LarapexCharts\LarapexChart;
 
 class {{ class }}
 {
-    protected $chart;
-
-    public function __construct(LarapexChart $chart)
-    {
-        $this->chart = $chart;
-    }
-
     public function build(): array
     {
-        return $this->chart->barChart()
+        return (new LarapexChart)->barChart()
             ->setTitle('San Francisco vs Boston.')
             ->setSubtitle('Wins during season 2021.')
             ->addData('San Francisco', [6, 9, 3, 4, 10, 8])

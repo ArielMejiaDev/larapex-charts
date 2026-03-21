@@ -572,7 +572,7 @@ class LarapexChart
                 'text' => $this->subtitle() ? $this->subtitle() : '',
                 'align' => $this->subtitlePosition() ? $this->subtitlePosition() : '',
             ],
-            'xaxis' => $this->xAxis(),
+            'xaxis' => json_decode($this->xAxis()),
             'yaxis' => [
                 'labels' => [
                     'show' => $this->showYAxisLabels(),
@@ -636,7 +636,7 @@ class LarapexChart
                 'text' => $this->subtitle() ? $this->subtitle() : '',
                 'align' => $this->subtitlePosition() ? $this->subtitlePosition() : '',
             ],
-            'xaxis' => $this->xAxis(),
+            'xaxis' => json_decode($this->xAxis()),
             'yaxis' => [
                 'labels' => [
                     'show' => $this->showYAxisLabels(),
